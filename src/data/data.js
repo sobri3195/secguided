@@ -210,16 +210,16 @@ export const latestResources = [
 ];
 
 export const navItems = [
-  { name: "Forums", href: "#forums" },
-  { name: "What's New", href: "#whats-new" },
-  { name: "Downloads", href: "#downloads" },
-  { name: "Tutorials", href: "#tutorials" },
-  { name: "Guides", href: "#guides" },
-  { name: "Anticheat", href: "#anticheat" },
-  { name: "Info", href: "#info" },
+  { name: 'Forums', href: '/forums' },
+  { name: "What's New", href: '/whats-new' },
+  { name: 'Downloads', href: '/downloads' },
+  { name: 'Tutorials', href: '/tutorials' },
+  { name: 'Guides', href: '/guides' },
+  { name: 'Anticheat', href: '/anticheat' },
+  { name: 'Info', href: '/info' },
 ];
 
 export const footerLinks = {
-  contact: ["Contact us"],
-  legal: ["Terms and rules", "Privacy policy"],
+  contact: ['Contact us'],
+  legal: ['Terms and rules', 'Privacy policy'],
 };

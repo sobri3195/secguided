@@ -1,29 +1,39 @@
 import React from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import CoursesSection from './components/CoursesSection';
-import PopularSections from './components/PopularSections';
-import CommunitySections from './components/CommunitySections';
-import LatestPosts from './components/LatestPosts';
-import LatestResources from './components/LatestResources';
-import Footer from './components/Footer';
-import CookieBanner from './components/CookieBanner';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import RootLayout from './components/layout/RootLayout';
+import Home from './pages/Home';
+import Forums from './pages/Forums';
+import WhatsNew from './pages/WhatsNew';
+import Downloads from './pages/Downloads';
+import Tutorials from './pages/Tutorials';
+import Guides from './pages/Guides';
+import Anticheat from './pages/Anticheat';
+import Info from './pages/Info';
+import Contact from './pages/Contact';
+import Terms from './pages/Terms';
+import Privacy from './pages/Privacy';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      <main className="flex-1">
-        <Hero />
-        <CoursesSection />
-        <PopularSections />
-        <CommunitySections />
-        <LatestPosts />
-        <LatestResources />
-      </main>
-      <Footer />
-      <CookieBanner />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<RootLayout />}>
+          <Route index element={<Home />} />
+          <Route path="forums" element={<Forums />} />
+          <Route path="whats-new" element={<WhatsNew />} />
+          <Route path="downloads" element={<Downloads />} />
+          <Route path="tutorials" element={<Tutorials />} />
+          <Route path="guides" element={<Guides />} />
+          <Route path="anticheat" element={<Anticheat />} />
+          <Route path="info" element={<Info />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="terms" element={<Terms />} />
+          <Route path="privacy" element={<Privacy />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
