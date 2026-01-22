@@ -56,7 +56,7 @@ const CommunitySections = () => {
 
                 {/* Meta and Latest */}
                 <div className="mt-auto pt-4 border-t border-dark-700">
-                  <div className="flex items-center justify-between text-sm">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-sm">
                     <div className="flex items-center space-x-4 text-gray-500">
                       <span className="flex items-center">
                         <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -71,9 +71,9 @@ const CommunitySections = () => {
                         {section.messages}
                       </span>
                     </div>
-                    <div className="flex items-center text-gray-400">
-                      <span className="text-xs mr-2">Latest:</span>
-                      <span className="text-cyan-400 text-sm font-medium truncate max-w-[150px]">
+                    <div className="flex items-center text-gray-400 sm:text-right">
+                      <span className="text-xs mr-2 sm:ml-0">Latest:</span>
+                      <span className="text-cyan-400 text-sm font-medium truncate max-w-[120px] sm:max-w-[150px]">
                         {section.latest}
                       </span>
                     </div>
