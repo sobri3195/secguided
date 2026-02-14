@@ -216,6 +216,7 @@ export const navItems = [
   { name: 'Tutorials', href: '/tutorials' },
   { name: 'Bank Soal', href: '/question-bank' },
   { name: 'Guides', href: '/guides' },
+  { name: 'Security Blueprints', href: '/security-blueprints' },
   { name: 'Anticheat', href: '/anticheat' },
   { name: 'Info', href: '/info' },
 ];
