@@ -1,0 +1,1886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Offline Quiz App - Defensive Cybersecurity Fundamentals</title>
+  <style>
+    :root {--bg:#0b1220;--card:#121a2b;--muted:#8fa3c2;--text:#eaf2ff;--primary:#4da3ff;--good:#32c48d;--bad:#ff6b6b;}
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:linear-gradient(160deg,#0b1220,#111b30);color:var(--text);min-height:100vh}
+    .wrap{max-width:900px;margin:0 auto;padding:1rem}
+    .card{background:rgba(18,26,43,.95);border:1px solid #27344f;border-radius:16px;padding:1rem;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    h1{font-size:1.3rem;margin:.2rem 0 .5rem} .sub{color:var(--muted);margin:0 0 1rem;font-size:.95rem}
+    .row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center} button,select,input[type=checkbox]{font:inherit}
+    button{background:#1d2a45;color:var(--text);border:1px solid #2e4366;padding:.6rem .9rem;border-radius:10px;cursor:pointer}
+    button.primary{background:var(--primary);color:#041327;border:none;font-weight:700}
+    button:disabled{opacity:.55;cursor:not-allowed}
+    .pill{display:inline-block;background:#1a2540;border:1px solid #2b3f61;padding:.25rem .55rem;border-radius:999px;font-size:.82rem;color:var(--muted)}
+    .q{font-size:1.05rem;margin:.75rem 0}
+    .opts{display:grid;gap:.55rem}
+    .opt{display:flex;gap:.55rem;align-items:flex-start;background:#101a2e;border:1px solid #283a59;border-radius:10px;padding:.65rem;cursor:pointer}
+    .opt input{margin-top:.2rem} .opt.correct{border-color:var(--good)} .opt.wrong{border-color:var(--bad)}
+    .muted{color:var(--muted)} .feedback{margin-top:.7rem;padding:.7rem;border-radius:10px;background:#0f1a2e;border:1px solid #2a3f63}
+    .feedback.good{border-color:var(--good)} .feedback.bad{border-color:var(--bad)}
+    .split{display:grid;gap:1rem}
+    @media (min-width:760px){.split{grid-template-columns:2fr 1fr} h1{font-size:1.6rem}}
+    .history{max-height:260px;overflow:auto;padding-right:.25rem} ul{padding-left:1.1rem;margin:.4rem 0}
+    .topic{font-weight:700;color:#9cc8ff}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card split">
+      <div>
+        <h1>Offline Quiz App <span class="topic">— Defensive Cybersecurity Fundamentals</span></h1>
+        <p class="sub">Topic: Defensive Cybersecurity Fundamentals • Language: English • Embedded bank: 100 MCQs.</p>
+        <div class="row" aria-label="quiz controls">
+          <label for="mode">Mode</label>
+          <select id="mode" aria-label="quiz mode">
+            <option value="10">Practice (10 questions)</option>
+            <option value="100">Full Exam (100 questions)</option>
+          </select>
+          <label><input id="instantToggle" type="checkbox" checked /> Instant feedback</label>
+          <button id="startBtn" class="primary">Start / Restart</button>
+          <button id="resetBtn">Reset Local Data</button>
+        </div>
+        <hr style="border-color:#223455;margin:1rem 0" />
+        <div id="status" class="row"></div>
+        <div id="questionBox" aria-live="polite"></div>
+        <div id="actions" class="row" style="margin-top:.8rem"></div>
+      </div>
+      <aside>
+        <div class="pill">Best Score: <span id="bestScore">0%</span></div>
+        <div style="margin-top:.8rem" class="card">
+          <strong>Attempt History</strong>
+          <p class="muted" style="margin:.35rem 0">Stored in LocalStorage</p>
+          <div id="history" class="history muted"></div>
+        </div>
+      </aside>
+    </section>
+  </main>
+<script>
+const QUESTION_BANK = [
+  {
+    "id": 1,
+    "difficulty": "easy",
+    "tags": [
+      "network",
+      "basics",
+      "network-security-basics"
+    ],
+    "question": "Which control best reduces risk in network security basics?",
+    "options": [
+      "Apply layered preventive and detective controls",
+      "Rely on one perimeter firewall only",
+      "Disable logging to improve performance",
+      "Allow shared admin accounts for convenience"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Defense-in-depth lowers single-point-of-failure risk by combining multiple controls."
+  },
+  {
+    "id": 2,
+    "difficulty": "easy",
+    "tags": [
+      "network",
+      "basics",
+      "network-security-basics"
+    ],
+    "question": "What is the most defensive first step when improving network security basics?",
+    "options": [
+      "Identify critical assets and current exposure",
+      "Purchase tools before defining requirements",
+      "Grant broad access to speed deployment",
+      "Skip documentation until after incidents"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "You should begin with asset and risk visibility so controls are prioritized effectively."
+  },
+  {
+    "id": 3,
+    "difficulty": "easy",
+    "tags": [
+      "network",
+      "basics",
+      "network-security-basics"
+    ],
+    "question": "Which metric is most useful to track network security basics program health?",
+    "options": [
+      "Time to detect and remediate security issues",
+      "Number of unread policy documents",
+      "Count of disabled security alerts",
+      "Total amount of internet traffic"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Detection and remediation time directly indicate operational security effectiveness."
+  },
+  {
+    "id": 4,
+    "difficulty": "easy",
+    "tags": [
+      "network",
+      "basics",
+      "network-security-basics"
+    ],
+    "question": "In network security basics, what practice most supports continuous improvement?",
+    "options": [
+      "Run regular reviews and update controls from lessons learned",
+      "Freeze controls permanently after first deployment",
+      "Ignore near-miss events because no breach occurred",
+      "Avoid cross-team communication to reduce meetings"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Review cycles and lessons learned make defensive controls adapt to changing threats."
+  },
+  {
+    "id": 5,
+    "difficulty": "easy",
+    "tags": [
+      "network",
+      "basics",
+      "network-security-basics"
+    ],
+    "question": "Which statement about network security basics is most accurate?",
+    "options": [
+      "Security is an ongoing process combining people, process, and technology",
+      "Security is solved once a single product is installed",
+      "Security can be delegated entirely to one department",
+      "Security controls are unnecessary in low-risk periods"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Sustainable security requires ongoing governance, operations, and technical controls."
+  },
+  {
+    "id": 6,
+    "difficulty": "easy",
+    "tags": [
+      "iam",
+      "auth",
+      "authentication-&-access-control"
+    ],
+    "question": "Which control best reduces risk in authentication & access control?",
+    "options": [
+      "Apply layered preventive and detective controls",
+      "Rely on one perimeter firewall only",
+      "Disable logging to improve performance",
+      "Allow shared admin accounts for convenience"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Defense-in-depth lowers single-point-of-failure risk by combining multiple controls."
+  },
+  {
+    "id": 7,
+    "difficulty": "easy",
+    "tags": [
+      "iam",
+      "auth",
+      "authentication-&-access-control"
+    ],
+    "question": "What is the most defensive first step when improving authentication & access control?",
+    "options": [
+      "Identify critical assets and current exposure",
+      "Purchase tools before defining requirements",
+      "Grant broad access to speed deployment",
+      "Skip documentation until after incidents"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "You should begin with asset and risk visibility so controls are prioritized effectively."
+  },
+  {
+    "id": 8,
+    "difficulty": "easy",
+    "tags": [
+      "iam",
+      "auth",
+      "authentication-&-access-control"
+    ],
+    "question": "Which metric is most useful to track authentication & access control program health?",
+    "options": [
+      "Time to detect and remediate security issues",
+      "Number of unread policy documents",
+      "Count of disabled security alerts",
+      "Total amount of internet traffic"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Detection and remediation time directly indicate operational security effectiveness."
+  },
+  {
+    "id": 9,
+    "difficulty": "easy",
+    "tags": [
+      "iam",
+      "auth",
+      "authentication-&-access-control"
+    ],
+    "question": "In authentication & access control, what practice most supports continuous improvement?",
+    "options": [
+      "Run regular reviews and update controls from lessons learned",
+      "Freeze controls permanently after first deployment",
+      "Ignore near-miss events because no breach occurred",
+      "Avoid cross-team communication to reduce meetings"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Review cycles and lessons learned make defensive controls adapt to changing threats."
+  },
+  {
+    "id": 10,
+    "difficulty": "easy",
+    "tags": [
+      "iam",
+      "auth",
+      "authentication-&-access-control"
+    ],
+    "question": "Which statement about authentication & access control is most accurate?",
+    "options": [
+      "Security is an ongoing process combining people, process, and technology",
+      "Security is solved once a single product is installed",
+      "Security can be delegated entirely to one department",
+      "Security controls are unnecessary in low-risk periods"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Sustainable security requires ongoing governance, operations, and technical controls."
+  },
+  {
+    "id": 11,
+    "difficulty": "easy",
+    "tags": [
+      "passwords",
+      "mfa",
+      "password-&-mfa-hygiene"
+    ],
+    "question": "Which control best reduces risk in password & mfa hygiene?",
+    "options": [
+      "Apply layered preventive and detective controls",
+      "Rely on one perimeter firewall only",
+      "Disable logging to improve performance",
+      "Allow shared admin accounts for convenience"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Defense-in-depth lowers single-point-of-failure risk by combining multiple controls."
+  },
+  {
+    "id": 12,
+    "difficulty": "easy",
+    "tags": [
+      "passwords",
+      "mfa",
+      "password-&-mfa-hygiene"
+    ],
+    "question": "What is the most defensive first step when improving password & mfa hygiene?",
+    "options": [
+      "Identify critical assets and current exposure",
+      "Purchase tools before defining requirements",
+      "Grant broad access to speed deployment",
+      "Skip documentation until after incidents"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "You should begin with asset and risk visibility so controls are prioritized effectively."
+  },
+  {
+    "id": 13,
+    "difficulty": "easy",
+    "tags": [
+      "passwords",
+      "mfa",
+      "password-&-mfa-hygiene"
+    ],
+    "question": "Which metric is most useful to track password & mfa hygiene program health?",
+    "options": [
+      "Time to detect and remediate security issues",
+      "Number of unread policy documents",
+      "Count of disabled security alerts",
+      "Total amount of internet traffic"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Detection and remediation time directly indicate operational security effectiveness."
+  },
+  {
+    "id": 14,
+    "difficulty": "easy",
+    "tags": [
+      "passwords",
+      "mfa",
+      "password-&-mfa-hygiene"
+    ],
+    "question": "In password & mfa hygiene, what practice most supports continuous improvement?",
+    "options": [
+      "Run regular reviews and update controls from lessons learned",
+      "Freeze controls permanently after first deployment",
+      "Ignore near-miss events because no breach occurred",
+      "Avoid cross-team communication to reduce meetings"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Review cycles and lessons learned make defensive controls adapt to changing threats."
+  },
+  {
+    "id": 15,
+    "difficulty": "easy",
+    "tags": [
+      "passwords",
+      "mfa",
+      "password-&-mfa-hygiene"
+    ],
+    "question": "Which statement about password & mfa hygiene is most accurate?",
+    "options": [
+      "Security is an ongoing process combining people, process, and technology",
+      "Security is solved once a single product is installed",
+      "Security can be delegated entirely to one department",
+      "Security controls are unnecessary in low-risk periods"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Sustainable security requires ongoing governance, operations, and technical controls."
+  },
+  {
+    "id": 16,
+    "difficulty": "easy",
+    "tags": [
+      "email",
+      "awareness",
+      "email-&-phishing-defense"
+    ],
+    "question": "Which control best reduces risk in email & phishing defense?",
+    "options": [
+      "Apply layered preventive and detective controls",
+      "Trust urgent requests without verification",
+      "Open all unexpected attachments immediately",
+      "Skip sender-domain checks"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Defense-in-depth lowers single-point-of-failure risk by combining multiple controls."
+  },
+  {
+    "id": 17,
+    "difficulty": "easy",
+    "tags": [
+      "email",
+      "awareness",
+      "email-&-phishing-defense"
+    ],
+    "question": "What is the most defensive first step when improving email & phishing defense?",
+    "options": [
+      "Identify critical assets and current exposure",
+      "Trust urgent requests without verification",
+      "Open all unexpected attachments immediately",
+      "Skip sender-domain checks"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "You should begin with asset and risk visibility so controls are prioritized effectively."
+  },
+  {
+    "id": 18,
+    "difficulty": "easy",
+    "tags": [
+      "email",
+      "awareness",
+      "email-&-phishing-defense"
+    ],
+    "question": "Which metric is most useful to track email & phishing defense program health?",
+    "options": [
+      "Time to detect and remediate security issues",
+      "Trust urgent requests without verification",
+      "Open all unexpected attachments immediately",
+      "Skip sender-domain checks"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Detection and remediation time directly indicate operational security effectiveness."
+  },
+  {
+    "id": 19,
+    "difficulty": "easy",
+    "tags": [
+      "email",
+      "awareness",
+      "email-&-phishing-defense"
+    ],
+    "question": "In email & phishing defense, what practice most supports continuous improvement?",
+    "options": [
+      "Run regular reviews and update controls from lessons learned",
+      "Trust urgent requests without verification",
+      "Open all unexpected attachments immediately",
+      "Skip sender-domain checks"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Review cycles and lessons learned make defensive controls adapt to changing threats."
+  },
+  {
+    "id": 20,
+    "difficulty": "easy",
+    "tags": [
+      "email",
+      "awareness",
+      "email-&-phishing-defense"
+    ],
+    "question": "Which statement about email & phishing defense is most accurate?",
+    "options": [
+      "Security is an ongoing process combining people, process, and technology",
+      "Trust urgent requests without verification",
+      "Open all unexpected attachments immediately",
+      "Skip sender-domain checks"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Sustainable security requires ongoing governance, operations, and technical controls."
+  },
+  {
+    "id": 21,
+    "difficulty": "medium",
+    "tags": [
+      "endpoint",
+      "hardening",
+      "endpoint-protection"
+    ],
+    "question": "Which control best reduces risk in endpoint protection?",
+    "options": [
+      "Apply layered preventive and detective controls",
+      "Rely on one perimeter firewall only",
+      "Disable logging to improve performance",
+      "Allow shared admin accounts for convenience"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Defense-in-depth lowers single-point-of-failure risk by combining multiple controls."
+  },
+  {
+    "id": 22,
+    "difficulty": "medium",
+    "tags": [
+      "endpoint",
+      "hardening",
+      "endpoint-protection"
+    ],
+    "question": "What is the most defensive first step when improving endpoint protection?",
+    "options": [
+      "Identify critical assets and current exposure",
+      "Purchase tools before defining requirements",
+      "Grant broad access to speed deployment",
+      "Skip documentation until after incidents"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "You should begin with asset and risk visibility so controls are prioritized effectively."
+  },
+  {
+    "id": 23,
+    "difficulty": "medium",
+    "tags": [
+      "endpoint",
+      "hardening",
+      "endpoint-protection"
+    ],
+    "question": "Which metric is most useful to track endpoint protection program health?",
+    "options": [
+      "Time to detect and remediate security issues",
+      "Number of unread policy documents",
+      "Count of disabled security alerts",
+      "Total amount of internet traffic"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Detection and remediation time directly indicate operational security effectiveness."
+  },
+  {
+    "id": 24,
+    "difficulty": "medium",
+    "tags": [
+      "endpoint",
+      "hardening",
+      "endpoint-protection"
+    ],
+    "question": "In endpoint protection, what practice most supports continuous improvement?",
+    "options": [
+      "Run regular reviews and update controls from lessons learned",
+      "Freeze controls permanently after first deployment",
+      "Ignore near-miss events because no breach occurred",
+      "Avoid cross-team communication to reduce meetings"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Review cycles and lessons learned make defensive controls adapt to changing threats."
+  },
+  {
+    "id": 25,
+    "difficulty": "medium",
+    "tags": [
+      "endpoint",
+      "hardening",
+      "endpoint-protection"
+    ],
+    "question": "Which statement about endpoint protection is most accurate?",
+    "options": [
+      "Security is an ongoing process combining people, process, and technology",
+      "Security is solved once a single product is installed",
+      "Security can be delegated entirely to one department",
+      "Security controls are unnecessary in low-risk periods"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Sustainable security requires ongoing governance, operations, and technical controls."
+  },
+  {
+    "id": 26,
+    "difficulty": "medium",
+    "tags": [
+      "web",
+      "owasp",
+      "web-security-defensive-concepts"
+    ],
+    "question": "Which control best reduces risk in web security defensive concepts?",
+    "options": [
+      "Apply layered preventive and detective controls",
+      "Rely on one perimeter firewall only",
+      "Disable logging to improve performance",
+      "Allow shared admin accounts for convenience"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Defense-in-depth lowers single-point-of-failure risk by combining multiple controls."
+  },
+  {
+    "id": 27,
+    "difficulty": "medium",
+    "tags": [
+      "web",
+      "owasp",
+      "web-security-defensive-concepts"
+    ],
+    "question": "What is the most defensive first step when improving web security defensive concepts?",
+    "options": [
+      "Identify critical assets and current exposure",
+      "Purchase tools before defining requirements",
+      "Grant broad access to speed deployment",
+      "Skip documentation until after incidents"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "You should begin with asset and risk visibility so controls are prioritized effectively."
+  },
+  {
+    "id": 28,
+    "difficulty": "medium",
+    "tags": [
+      "web",
+      "owasp",
+      "web-security-defensive-concepts"
+    ],
+    "question": "Which metric is most useful to track web security defensive concepts program health?",
+    "options": [
+      "Time to detect and remediate security issues",
+      "Number of unread policy documents",
+      "Count of disabled security alerts",
+      "Total amount of internet traffic"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Detection and remediation time directly indicate operational security effectiveness."
+  },
+  {
+    "id": 29,
+    "difficulty": "medium",
+    "tags": [
+      "web",
+      "owasp",
+      "web-security-defensive-concepts"
+    ],
+    "question": "In web security defensive concepts, what practice most supports continuous improvement?",
+    "options": [
+      "Run regular reviews and update controls from lessons learned",
+      "Freeze controls permanently after first deployment",
+      "Ignore near-miss events because no breach occurred",
+      "Avoid cross-team communication to reduce meetings"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Review cycles and lessons learned make defensive controls adapt to changing threats."
+  },
+  {
+    "id": 30,
+    "difficulty": "medium",
+    "tags": [
+      "web",
+      "owasp",
+      "web-security-defensive-concepts"
+    ],
+    "question": "Which statement about web security defensive concepts is most accurate?",
+    "options": [
+      "Security is an ongoing process combining people, process, and technology",
+      "Security is solved once a single product is installed",
+      "Security can be delegated entirely to one department",
+      "Security controls are unnecessary in low-risk periods"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Sustainable security requires ongoing governance, operations, and technical controls."
+  },
+  {
+    "id": 31,
+    "difficulty": "medium",
+    "tags": [
+      "cloud",
+      "shared-responsibility",
+      "cloud-security-basics"
+    ],
+    "question": "Which control best reduces risk in cloud security basics?",
+    "options": [
+      "Apply layered preventive and detective controls",
+      "Rely on one perimeter firewall only",
+      "Disable logging to improve performance",
+      "Allow shared admin accounts for convenience"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Defense-in-depth lowers single-point-of-failure risk by combining multiple controls."
+  },
+  {
+    "id": 32,
+    "difficulty": "medium",
+    "tags": [
+      "cloud",
+      "shared-responsibility",
+      "cloud-security-basics"
+    ],
+    "question": "What is the most defensive first step when improving cloud security basics?",
+    "options": [
+      "Identify critical assets and current exposure",
+      "Purchase tools before defining requirements",
+      "Grant broad access to speed deployment",
+      "Skip documentation until after incidents"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "You should begin with asset and risk visibility so controls are prioritized effectively."
+  },
+  {
+    "id": 33,
+    "difficulty": "medium",
+    "tags": [
+      "cloud",
+      "shared-responsibility",
+      "cloud-security-basics"
+    ],
+    "question": "Which metric is most useful to track cloud security basics program health?",
+    "options": [
+      "Time to detect and remediate security issues",
+      "Number of unread policy documents",
+      "Count of disabled security alerts",
+      "Total amount of internet traffic"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Detection and remediation time directly indicate operational security effectiveness."
+  },
+  {
+    "id": 34,
+    "difficulty": "medium",
+    "tags": [
+      "cloud",
+      "shared-responsibility",
+      "cloud-security-basics"
+    ],
+    "question": "In cloud security basics, what practice most supports continuous improvement?",
+    "options": [
+      "Run regular reviews and update controls from lessons learned",
+      "Freeze controls permanently after first deployment",
+      "Ignore near-miss events because no breach occurred",
+      "Avoid cross-team communication to reduce meetings"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Review cycles and lessons learned make defensive controls adapt to changing threats."
+  },
+  {
+    "id": 35,
+    "difficulty": "medium",
+    "tags": [
+      "cloud",
+      "shared-responsibility",
+      "cloud-security-basics"
+    ],
+    "question": "Which statement about cloud security basics is most accurate?",
+    "options": [
+      "Security is an ongoing process combining people, process, and technology",
+      "Security is solved once a single product is installed",
+      "Security can be delegated entirely to one department",
+      "Security controls are unnecessary in low-risk periods"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Sustainable security requires ongoing governance, operations, and technical controls."
+  },
+  {
+    "id": 36,
+    "difficulty": "medium",
+    "tags": [
+      "data",
+      "encryption",
+      "data-protection-&-encryption"
+    ],
+    "question": "Which control best reduces risk in data protection & encryption?",
+    "options": [
+      "Apply layered preventive and detective controls",
+      "Rely on one perimeter firewall only",
+      "Disable logging to improve performance",
+      "Allow shared admin accounts for convenience"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Defense-in-depth lowers single-point-of-failure risk by combining multiple controls."
+  },
+  {
+    "id": 37,
+    "difficulty": "medium",
+    "tags": [
+      "data",
+      "encryption",
+      "data-protection-&-encryption"
+    ],
+    "question": "What is the most defensive first step when improving data protection & encryption?",
+    "options": [
+      "Identify critical assets and current exposure",
+      "Purchase tools before defining requirements",
+      "Grant broad access to speed deployment",
+      "Skip documentation until after incidents"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "You should begin with asset and risk visibility so controls are prioritized effectively."
+  },
+  {
+    "id": 38,
+    "difficulty": "medium",
+    "tags": [
+      "data",
+      "encryption",
+      "data-protection-&-encryption"
+    ],
+    "question": "Which metric is most useful to track data protection & encryption program health?",
+    "options": [
+      "Time to detect and remediate security issues",
+      "Number of unread policy documents",
+      "Count of disabled security alerts",
+      "Total amount of internet traffic"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Detection and remediation time directly indicate operational security effectiveness."
+  },
+  {
+    "id": 39,
+    "difficulty": "medium",
+    "tags": [
+      "data",
+      "encryption",
+      "data-protection-&-encryption"
+    ],
+    "question": "In data protection & encryption, what practice most supports continuous improvement?",
+    "options": [
+      "Run regular reviews and update controls from lessons learned",
+      "Freeze controls permanently after first deployment",
+      "Ignore near-miss events because no breach occurred",
+      "Avoid cross-team communication to reduce meetings"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Review cycles and lessons learned make defensive controls adapt to changing threats."
+  },
+  {
+    "id": 40,
+    "difficulty": "medium",
+    "tags": [
+      "data",
+      "encryption",
+      "data-protection-&-encryption"
+    ],
+    "question": "Which statement about data protection & encryption is most accurate?",
+    "options": [
+      "Security is an ongoing process combining people, process, and technology",
+      "Security is solved once a single product is installed",
+      "Security can be delegated entirely to one department",
+      "Security controls are unnecessary in low-risk periods"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Sustainable security requires ongoing governance, operations, and technical controls."
+  },
+  {
+    "id": 41,
+    "difficulty": "medium",
+    "tags": [
+      "vuln-management",
+      "patching",
+      "vulnerability-management"
+    ],
+    "question": "Which control best reduces risk in vulnerability management?",
+    "options": [
+      "Apply layered preventive and detective controls",
+      "Rely on one perimeter firewall only",
+      "Disable logging to improve performance",
+      "Allow shared admin accounts for convenience"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Defense-in-depth lowers single-point-of-failure risk by combining multiple controls."
+  },
+  {
+    "id": 42,
+    "difficulty": "medium",
+    "tags": [
+      "vuln-management",
+      "patching",
+      "vulnerability-management"
+    ],
+    "question": "What is the most defensive first step when improving vulnerability management?",
+    "options": [
+      "Identify critical assets and current exposure",
+      "Purchase tools before defining requirements",
+      "Grant broad access to speed deployment",
+      "Skip documentation until after incidents"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "You should begin with asset and risk visibility so controls are prioritized effectively."
+  },
+  {
+    "id": 43,
+    "difficulty": "medium",
+    "tags": [
+      "vuln-management",
+      "patching",
+      "vulnerability-management"
+    ],
+    "question": "Which metric is most useful to track vulnerability management program health?",
+    "options": [
+      "Time to detect and remediate security issues",
+      "Number of unread policy documents",
+      "Count of disabled security alerts",
+      "Total amount of internet traffic"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Detection and remediation time directly indicate operational security effectiveness."
+  },
+  {
+    "id": 44,
+    "difficulty": "medium",
+    "tags": [
+      "vuln-management",
+      "patching",
+      "vulnerability-management"
+    ],
+    "question": "In vulnerability management, what practice most supports continuous improvement?",
+    "options": [
+      "Run regular reviews and update controls from lessons learned",
+      "Freeze controls permanently after first deployment",
+      "Ignore near-miss events because no breach occurred",
+      "Avoid cross-team communication to reduce meetings"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Review cycles and lessons learned make defensive controls adapt to changing threats."
+  },
+  {
+    "id": 45,
+    "difficulty": "medium",
+    "tags": [
+      "vuln-management",
+      "patching",
+      "vulnerability-management"
+    ],
+    "question": "Which statement about vulnerability management is most accurate?",
+    "options": [
+      "Security is an ongoing process combining people, process, and technology",
+      "Security is solved once a single product is installed",
+      "Security can be delegated entirely to one department",
+      "Security controls are unnecessary in low-risk periods"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Sustainable security requires ongoing governance, operations, and technical controls."
+  },
+  {
+    "id": 46,
+    "difficulty": "medium",
+    "tags": [
+      "ir",
+      "operations",
+      "incident-response"
+    ],
+    "question": "Which control best reduces risk in incident response?",
+    "options": [
+      "Apply layered preventive and detective controls",
+      "Delete evidence before analysis",
+      "Notify nobody to avoid panic",
+      "Delay containment until next quarter"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Defense-in-depth lowers single-point-of-failure risk by combining multiple controls."
+  },
+  {
+    "id": 47,
+    "difficulty": "medium",
+    "tags": [
+      "ir",
+      "operations",
+      "incident-response"
+    ],
+    "question": "What is the most defensive first step when improving incident response?",
+    "options": [
+      "Identify critical assets and current exposure",
+      "Delete evidence before analysis",
+      "Notify nobody to avoid panic",
+      "Delay containment until next quarter"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "You should begin with asset and risk visibility so controls are prioritized effectively."
+  },
+  {
+    "id": 48,
+    "difficulty": "medium",
+    "tags": [
+      "ir",
+      "operations",
+      "incident-response"
+    ],
+    "question": "Which metric is most useful to track incident response program health?",
+    "options": [
+      "Time to detect and remediate security issues",
+      "Delete evidence before analysis",
+      "Notify nobody to avoid panic",
+      "Delay containment until next quarter"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Detection and remediation time directly indicate operational security effectiveness."
+  },
+  {
+    "id": 49,
+    "difficulty": "medium",
+    "tags": [
+      "ir",
+      "operations",
+      "incident-response"
+    ],
+    "question": "In incident response, what practice most supports continuous improvement?",
+    "options": [
+      "Run regular reviews and update controls from lessons learned",
+      "Delete evidence before analysis",
+      "Notify nobody to avoid panic",
+      "Delay containment until next quarter"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Review cycles and lessons learned make defensive controls adapt to changing threats."
+  },
+  {
+    "id": 50,
+    "difficulty": "medium",
+    "tags": [
+      "ir",
+      "operations",
+      "incident-response"
+    ],
+    "question": "Which statement about incident response is most accurate?",
+    "options": [
+      "Security is an ongoing process combining people, process, and technology",
+      "Delete evidence before analysis",
+      "Notify nobody to avoid panic",
+      "Delay containment until next quarter"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Sustainable security requires ongoing governance, operations, and technical controls."
+  },
+  {
+    "id": 51,
+    "difficulty": "medium",
+    "tags": [
+      "monitoring",
+      "siem",
+      "logging,-monitoring,-siem"
+    ],
+    "question": "Which control best reduces risk in logging, monitoring, siem?",
+    "options": [
+      "Apply layered preventive and detective controls",
+      "Rely on one perimeter firewall only",
+      "Disable logging to improve performance",
+      "Allow shared admin accounts for convenience"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Defense-in-depth lowers single-point-of-failure risk by combining multiple controls."
+  },
+  {
+    "id": 52,
+    "difficulty": "medium",
+    "tags": [
+      "monitoring",
+      "siem",
+      "logging,-monitoring,-siem"
+    ],
+    "question": "What is the most defensive first step when improving logging, monitoring, siem?",
+    "options": [
+      "Identify critical assets and current exposure",
+      "Purchase tools before defining requirements",
+      "Grant broad access to speed deployment",
+      "Skip documentation until after incidents"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "You should begin with asset and risk visibility so controls are prioritized effectively."
+  },
+  {
+    "id": 53,
+    "difficulty": "medium",
+    "tags": [
+      "monitoring",
+      "siem",
+      "logging,-monitoring,-siem"
+    ],
+    "question": "Which metric is most useful to track logging, monitoring, siem program health?",
+    "options": [
+      "Time to detect and remediate security issues",
+      "Number of unread policy documents",
+      "Count of disabled security alerts",
+      "Total amount of internet traffic"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Detection and remediation time directly indicate operational security effectiveness."
+  },
+  {
+    "id": 54,
+    "difficulty": "medium",
+    "tags": [
+      "monitoring",
+      "siem",
+      "logging,-monitoring,-siem"
+    ],
+    "question": "In logging, monitoring, siem, what practice most supports continuous improvement?",
+    "options": [
+      "Run regular reviews and update controls from lessons learned",
+      "Freeze controls permanently after first deployment",
+      "Ignore near-miss events because no breach occurred",
+      "Avoid cross-team communication to reduce meetings"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Review cycles and lessons learned make defensive controls adapt to changing threats."
+  },
+  {
+    "id": 55,
+    "difficulty": "medium",
+    "tags": [
+      "monitoring",
+      "siem",
+      "logging,-monitoring,-siem"
+    ],
+    "question": "Which statement about logging, monitoring, siem is most accurate?",
+    "options": [
+      "Security is an ongoing process combining people, process, and technology",
+      "Security is solved once a single product is installed",
+      "Security can be delegated entirely to one department",
+      "Security controls are unnecessary in low-risk periods"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Sustainable security requires ongoing governance, operations, and technical controls."
+  },
+  {
+    "id": 56,
+    "difficulty": "medium",
+    "tags": [
+      "zero-trust",
+      "architecture",
+      "zero-trust-principles"
+    ],
+    "question": "Which control best reduces risk in zero trust principles?",
+    "options": [
+      "Apply layered preventive and detective controls",
+      "Rely on one perimeter firewall only",
+      "Disable logging to improve performance",
+      "Allow shared admin accounts for convenience"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Defense-in-depth lowers single-point-of-failure risk by combining multiple controls."
+  },
+  {
+    "id": 57,
+    "difficulty": "medium",
+    "tags": [
+      "zero-trust",
+      "architecture",
+      "zero-trust-principles"
+    ],
+    "question": "What is the most defensive first step when improving zero trust principles?",
+    "options": [
+      "Identify critical assets and current exposure",
+      "Purchase tools before defining requirements",
+      "Grant broad access to speed deployment",
+      "Skip documentation until after incidents"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "You should begin with asset and risk visibility so controls are prioritized effectively."
+  },
+  {
+    "id": 58,
+    "difficulty": "medium",
+    "tags": [
+      "zero-trust",
+      "architecture",
+      "zero-trust-principles"
+    ],
+    "question": "Which metric is most useful to track zero trust principles program health?",
+    "options": [
+      "Time to detect and remediate security issues",
+      "Number of unread policy documents",
+      "Count of disabled security alerts",
+      "Total amount of internet traffic"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Detection and remediation time directly indicate operational security effectiveness."
+  },
+  {
+    "id": 59,
+    "difficulty": "medium",
+    "tags": [
+      "zero-trust",
+      "architecture",
+      "zero-trust-principles"
+    ],
+    "question": "In zero trust principles, what practice most supports continuous improvement?",
+    "options": [
+      "Run regular reviews and update controls from lessons learned",
+      "Freeze controls permanently after first deployment",
+      "Ignore near-miss events because no breach occurred",
+      "Avoid cross-team communication to reduce meetings"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Review cycles and lessons learned make defensive controls adapt to changing threats."
+  },
+  {
+    "id": 60,
+    "difficulty": "medium",
+    "tags": [
+      "zero-trust",
+      "architecture",
+      "zero-trust-principles"
+    ],
+    "question": "Which statement about zero trust principles is most accurate?",
+    "options": [
+      "Security is an ongoing process combining people, process, and technology",
+      "Security is solved once a single product is installed",
+      "Security can be delegated entirely to one department",
+      "Security controls are unnecessary in low-risk periods"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Sustainable security requires ongoing governance, operations, and technical controls."
+  },
+  {
+    "id": 61,
+    "difficulty": "medium",
+    "tags": [
+      "hardening",
+      "configuration",
+      "secure-configuration"
+    ],
+    "question": "Which control best reduces risk in secure configuration?",
+    "options": [
+      "Apply layered preventive and detective controls",
+      "Rely on one perimeter firewall only",
+      "Disable logging to improve performance",
+      "Allow shared admin accounts for convenience"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Defense-in-depth lowers single-point-of-failure risk by combining multiple controls."
+  },
+  {
+    "id": 62,
+    "difficulty": "medium",
+    "tags": [
+      "hardening",
+      "configuration",
+      "secure-configuration"
+    ],
+    "question": "What is the most defensive first step when improving secure configuration?",
+    "options": [
+      "Identify critical assets and current exposure",
+      "Purchase tools before defining requirements",
+      "Grant broad access to speed deployment",
+      "Skip documentation until after incidents"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "You should begin with asset and risk visibility so controls are prioritized effectively."
+  },
+  {
+    "id": 63,
+    "difficulty": "medium",
+    "tags": [
+      "hardening",
+      "configuration",
+      "secure-configuration"
+    ],
+    "question": "Which metric is most useful to track secure configuration program health?",
+    "options": [
+      "Time to detect and remediate security issues",
+      "Number of unread policy documents",
+      "Count of disabled security alerts",
+      "Total amount of internet traffic"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Detection and remediation time directly indicate operational security effectiveness."
+  },
+  {
+    "id": 64,
+    "difficulty": "medium",
+    "tags": [
+      "hardening",
+      "configuration",
+      "secure-configuration"
+    ],
+    "question": "In secure configuration, what practice most supports continuous improvement?",
+    "options": [
+      "Run regular reviews and update controls from lessons learned",
+      "Freeze controls permanently after first deployment",
+      "Ignore near-miss events because no breach occurred",
+      "Avoid cross-team communication to reduce meetings"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Review cycles and lessons learned make defensive controls adapt to changing threats."
+  },
+  {
+    "id": 65,
+    "difficulty": "medium",
+    "tags": [
+      "hardening",
+      "configuration",
+      "secure-configuration"
+    ],
+    "question": "Which statement about secure configuration is most accurate?",
+    "options": [
+      "Security is an ongoing process combining people, process, and technology",
+      "Security is solved once a single product is installed",
+      "Security can be delegated entirely to one department",
+      "Security controls are unnecessary in low-risk periods"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Sustainable security requires ongoing governance, operations, and technical controls."
+  },
+  {
+    "id": 66,
+    "difficulty": "easy",
+    "tags": [
+      "backup",
+      "resilience",
+      "backups-&-recovery"
+    ],
+    "question": "Which control best reduces risk in backups & recovery?",
+    "options": [
+      "Apply layered preventive and detective controls",
+      "Keep backups untested and always online",
+      "Store only one backup copy on production systems",
+      "Avoid documenting restore procedures"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Defense-in-depth lowers single-point-of-failure risk by combining multiple controls."
+  },
+  {
+    "id": 67,
+    "difficulty": "easy",
+    "tags": [
+      "backup",
+      "resilience",
+      "backups-&-recovery"
+    ],
+    "question": "What is the most defensive first step when improving backups & recovery?",
+    "options": [
+      "Identify critical assets and current exposure",
+      "Keep backups untested and always online",
+      "Store only one backup copy on production systems",
+      "Avoid documenting restore procedures"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "You should begin with asset and risk visibility so controls are prioritized effectively."
+  },
+  {
+    "id": 68,
+    "difficulty": "easy",
+    "tags": [
+      "backup",
+      "resilience",
+      "backups-&-recovery"
+    ],
+    "question": "Which metric is most useful to track backups & recovery program health?",
+    "options": [
+      "Time to detect and remediate security issues",
+      "Keep backups untested and always online",
+      "Store only one backup copy on production systems",
+      "Avoid documenting restore procedures"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Detection and remediation time directly indicate operational security effectiveness."
+  },
+  {
+    "id": 69,
+    "difficulty": "easy",
+    "tags": [
+      "backup",
+      "resilience",
+      "backups-&-recovery"
+    ],
+    "question": "In backups & recovery, what practice most supports continuous improvement?",
+    "options": [
+      "Run regular reviews and update controls from lessons learned",
+      "Keep backups untested and always online",
+      "Store only one backup copy on production systems",
+      "Avoid documenting restore procedures"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Review cycles and lessons learned make defensive controls adapt to changing threats."
+  },
+  {
+    "id": 70,
+    "difficulty": "easy",
+    "tags": [
+      "backup",
+      "resilience",
+      "backups-&-recovery"
+    ],
+    "question": "Which statement about backups & recovery is most accurate?",
+    "options": [
+      "Security is an ongoing process combining people, process, and technology",
+      "Keep backups untested and always online",
+      "Store only one backup copy on production systems",
+      "Avoid documenting restore procedures"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Sustainable security requires ongoing governance, operations, and technical controls."
+  },
+  {
+    "id": 71,
+    "difficulty": "easy",
+    "tags": [
+      "policy",
+      "training",
+      "security-awareness-&-policy"
+    ],
+    "question": "Which control best reduces risk in security awareness & policy?",
+    "options": [
+      "Apply layered preventive and detective controls",
+      "Rely on one perimeter firewall only",
+      "Disable logging to improve performance",
+      "Allow shared admin accounts for convenience"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Defense-in-depth lowers single-point-of-failure risk by combining multiple controls."
+  },
+  {
+    "id": 72,
+    "difficulty": "easy",
+    "tags": [
+      "policy",
+      "training",
+      "security-awareness-&-policy"
+    ],
+    "question": "What is the most defensive first step when improving security awareness & policy?",
+    "options": [
+      "Identify critical assets and current exposure",
+      "Purchase tools before defining requirements",
+      "Grant broad access to speed deployment",
+      "Skip documentation until after incidents"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "You should begin with asset and risk visibility so controls are prioritized effectively."
+  },
+  {
+    "id": 73,
+    "difficulty": "easy",
+    "tags": [
+      "policy",
+      "training",
+      "security-awareness-&-policy"
+    ],
+    "question": "Which metric is most useful to track security awareness & policy program health?",
+    "options": [
+      "Time to detect and remediate security issues",
+      "Number of unread policy documents",
+      "Count of disabled security alerts",
+      "Total amount of internet traffic"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Detection and remediation time directly indicate operational security effectiveness."
+  },
+  {
+    "id": 74,
+    "difficulty": "easy",
+    "tags": [
+      "policy",
+      "training",
+      "security-awareness-&-policy"
+    ],
+    "question": "In security awareness & policy, what practice most supports continuous improvement?",
+    "options": [
+      "Run regular reviews and update controls from lessons learned",
+      "Freeze controls permanently after first deployment",
+      "Ignore near-miss events because no breach occurred",
+      "Avoid cross-team communication to reduce meetings"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Review cycles and lessons learned make defensive controls adapt to changing threats."
+  },
+  {
+    "id": 75,
+    "difficulty": "easy",
+    "tags": [
+      "policy",
+      "training",
+      "security-awareness-&-policy"
+    ],
+    "question": "Which statement about security awareness & policy is most accurate?",
+    "options": [
+      "Security is an ongoing process combining people, process, and technology",
+      "Security is solved once a single product is installed",
+      "Security can be delegated entirely to one department",
+      "Security controls are unnecessary in low-risk periods"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Sustainable security requires ongoing governance, operations, and technical controls."
+  },
+  {
+    "id": 76,
+    "difficulty": "easy",
+    "tags": [
+      "mobile",
+      "byod",
+      "mobile-device-security"
+    ],
+    "question": "Which control best reduces risk in mobile device security?",
+    "options": [
+      "Apply layered preventive and detective controls",
+      "Rely on one perimeter firewall only",
+      "Disable logging to improve performance",
+      "Allow shared admin accounts for convenience"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Defense-in-depth lowers single-point-of-failure risk by combining multiple controls."
+  },
+  {
+    "id": 77,
+    "difficulty": "easy",
+    "tags": [
+      "mobile",
+      "byod",
+      "mobile-device-security"
+    ],
+    "question": "What is the most defensive first step when improving mobile device security?",
+    "options": [
+      "Identify critical assets and current exposure",
+      "Purchase tools before defining requirements",
+      "Grant broad access to speed deployment",
+      "Skip documentation until after incidents"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "You should begin with asset and risk visibility so controls are prioritized effectively."
+  },
+  {
+    "id": 78,
+    "difficulty": "easy",
+    "tags": [
+      "mobile",
+      "byod",
+      "mobile-device-security"
+    ],
+    "question": "Which metric is most useful to track mobile device security program health?",
+    "options": [
+      "Time to detect and remediate security issues",
+      "Number of unread policy documents",
+      "Count of disabled security alerts",
+      "Total amount of internet traffic"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Detection and remediation time directly indicate operational security effectiveness."
+  },
+  {
+    "id": 79,
+    "difficulty": "easy",
+    "tags": [
+      "mobile",
+      "byod",
+      "mobile-device-security"
+    ],
+    "question": "In mobile device security, what practice most supports continuous improvement?",
+    "options": [
+      "Run regular reviews and update controls from lessons learned",
+      "Freeze controls permanently after first deployment",
+      "Ignore near-miss events because no breach occurred",
+      "Avoid cross-team communication to reduce meetings"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Review cycles and lessons learned make defensive controls adapt to changing threats."
+  },
+  {
+    "id": 80,
+    "difficulty": "easy",
+    "tags": [
+      "mobile",
+      "byod",
+      "mobile-device-security"
+    ],
+    "question": "Which statement about mobile device security is most accurate?",
+    "options": [
+      "Security is an ongoing process combining people, process, and technology",
+      "Security is solved once a single product is installed",
+      "Security can be delegated entirely to one department",
+      "Security controls are unnecessary in low-risk periods"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Sustainable security requires ongoing governance, operations, and technical controls."
+  },
+  {
+    "id": 81,
+    "difficulty": "easy",
+    "tags": [
+      "physical",
+      "ops",
+      "physical-security"
+    ],
+    "question": "Which control best reduces risk in physical security?",
+    "options": [
+      "Apply layered preventive and detective controls",
+      "Rely on one perimeter firewall only",
+      "Disable logging to improve performance",
+      "Allow shared admin accounts for convenience"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Defense-in-depth lowers single-point-of-failure risk by combining multiple controls."
+  },
+  {
+    "id": 82,
+    "difficulty": "easy",
+    "tags": [
+      "physical",
+      "ops",
+      "physical-security"
+    ],
+    "question": "What is the most defensive first step when improving physical security?",
+    "options": [
+      "Identify critical assets and current exposure",
+      "Purchase tools before defining requirements",
+      "Grant broad access to speed deployment",
+      "Skip documentation until after incidents"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "You should begin with asset and risk visibility so controls are prioritized effectively."
+  },
+  {
+    "id": 83,
+    "difficulty": "easy",
+    "tags": [
+      "physical",
+      "ops",
+      "physical-security"
+    ],
+    "question": "Which metric is most useful to track physical security program health?",
+    "options": [
+      "Time to detect and remediate security issues",
+      "Number of unread policy documents",
+      "Count of disabled security alerts",
+      "Total amount of internet traffic"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Detection and remediation time directly indicate operational security effectiveness."
+  },
+  {
+    "id": 84,
+    "difficulty": "easy",
+    "tags": [
+      "physical",
+      "ops",
+      "physical-security"
+    ],
+    "question": "In physical security, what practice most supports continuous improvement?",
+    "options": [
+      "Run regular reviews and update controls from lessons learned",
+      "Freeze controls permanently after first deployment",
+      "Ignore near-miss events because no breach occurred",
+      "Avoid cross-team communication to reduce meetings"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Review cycles and lessons learned make defensive controls adapt to changing threats."
+  },
+  {
+    "id": 85,
+    "difficulty": "easy",
+    "tags": [
+      "physical",
+      "ops",
+      "physical-security"
+    ],
+    "question": "Which statement about physical security is most accurate?",
+    "options": [
+      "Security is an ongoing process combining people, process, and technology",
+      "Security is solved once a single product is installed",
+      "Security can be delegated entirely to one department",
+      "Security controls are unnecessary in low-risk periods"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Sustainable security requires ongoing governance, operations, and technical controls."
+  },
+  {
+    "id": 86,
+    "difficulty": "hard",
+    "tags": [
+      "third-party",
+      "risk",
+      "third-party-&-supply-chain-risk"
+    ],
+    "question": "Which control best reduces risk in third-party & supply chain risk?",
+    "options": [
+      "Apply layered preventive and detective controls",
+      "Rely on one perimeter firewall only",
+      "Disable logging to improve performance",
+      "Allow shared admin accounts for convenience"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Defense-in-depth lowers single-point-of-failure risk by combining multiple controls."
+  },
+  {
+    "id": 87,
+    "difficulty": "hard",
+    "tags": [
+      "third-party",
+      "risk",
+      "third-party-&-supply-chain-risk"
+    ],
+    "question": "What is the most defensive first step when improving third-party & supply chain risk?",
+    "options": [
+      "Identify critical assets and current exposure",
+      "Purchase tools before defining requirements",
+      "Grant broad access to speed deployment",
+      "Skip documentation until after incidents"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "You should begin with asset and risk visibility so controls are prioritized effectively."
+  },
+  {
+    "id": 88,
+    "difficulty": "hard",
+    "tags": [
+      "third-party",
+      "risk",
+      "third-party-&-supply-chain-risk"
+    ],
+    "question": "Which metric is most useful to track third-party & supply chain risk program health?",
+    "options": [
+      "Time to detect and remediate security issues",
+      "Number of unread policy documents",
+      "Count of disabled security alerts",
+      "Total amount of internet traffic"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Detection and remediation time directly indicate operational security effectiveness."
+  },
+  {
+    "id": 89,
+    "difficulty": "hard",
+    "tags": [
+      "third-party",
+      "risk",
+      "third-party-&-supply-chain-risk"
+    ],
+    "question": "In third-party & supply chain risk, what practice most supports continuous improvement?",
+    "options": [
+      "Run regular reviews and update controls from lessons learned",
+      "Freeze controls permanently after first deployment",
+      "Ignore near-miss events because no breach occurred",
+      "Avoid cross-team communication to reduce meetings"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Review cycles and lessons learned make defensive controls adapt to changing threats."
+  },
+  {
+    "id": 90,
+    "difficulty": "hard",
+    "tags": [
+      "third-party",
+      "risk",
+      "third-party-&-supply-chain-risk"
+    ],
+    "question": "Which statement about third-party & supply chain risk is most accurate?",
+    "options": [
+      "Security is an ongoing process combining people, process, and technology",
+      "Security is solved once a single product is installed",
+      "Security can be delegated entirely to one department",
+      "Security controls are unnecessary in low-risk periods"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Sustainable security requires ongoing governance, operations, and technical controls."
+  },
+  {
+    "id": 91,
+    "difficulty": "hard",
+    "tags": [
+      "governance",
+      "compliance",
+      "compliance-&-governance"
+    ],
+    "question": "Which control best reduces risk in compliance & governance?",
+    "options": [
+      "Apply layered preventive and detective controls",
+      "Rely on one perimeter firewall only",
+      "Disable logging to improve performance",
+      "Allow shared admin accounts for convenience"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Defense-in-depth lowers single-point-of-failure risk by combining multiple controls."
+  },
+  {
+    "id": 92,
+    "difficulty": "hard",
+    "tags": [
+      "governance",
+      "compliance",
+      "compliance-&-governance"
+    ],
+    "question": "What is the most defensive first step when improving compliance & governance?",
+    "options": [
+      "Identify critical assets and current exposure",
+      "Purchase tools before defining requirements",
+      "Grant broad access to speed deployment",
+      "Skip documentation until after incidents"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "You should begin with asset and risk visibility so controls are prioritized effectively."
+  },
+  {
+    "id": 93,
+    "difficulty": "hard",
+    "tags": [
+      "governance",
+      "compliance",
+      "compliance-&-governance"
+    ],
+    "question": "Which metric is most useful to track compliance & governance program health?",
+    "options": [
+      "Time to detect and remediate security issues",
+      "Number of unread policy documents",
+      "Count of disabled security alerts",
+      "Total amount of internet traffic"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Detection and remediation time directly indicate operational security effectiveness."
+  },
+  {
+    "id": 94,
+    "difficulty": "hard",
+    "tags": [
+      "governance",
+      "compliance",
+      "compliance-&-governance"
+    ],
+    "question": "In compliance & governance, what practice most supports continuous improvement?",
+    "options": [
+      "Run regular reviews and update controls from lessons learned",
+      "Freeze controls permanently after first deployment",
+      "Ignore near-miss events because no breach occurred",
+      "Avoid cross-team communication to reduce meetings"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Review cycles and lessons learned make defensive controls adapt to changing threats."
+  },
+  {
+    "id": 95,
+    "difficulty": "hard",
+    "tags": [
+      "governance",
+      "compliance",
+      "compliance-&-governance"
+    ],
+    "question": "Which statement about compliance & governance is most accurate?",
+    "options": [
+      "Security is an ongoing process combining people, process, and technology",
+      "Security is solved once a single product is installed",
+      "Security can be delegated entirely to one department",
+      "Security controls are unnecessary in low-risk periods"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Sustainable security requires ongoing governance, operations, and technical controls."
+  },
+  {
+    "id": 96,
+    "difficulty": "hard",
+    "tags": [
+      "threat-modeling",
+      "risk",
+      "threat-modeling-&-risk-assessment"
+    ],
+    "question": "Which control best reduces risk in threat modeling & risk assessment?",
+    "options": [
+      "Apply layered preventive and detective controls",
+      "Rely on one perimeter firewall only",
+      "Disable logging to improve performance",
+      "Allow shared admin accounts for convenience"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Defense-in-depth lowers single-point-of-failure risk by combining multiple controls."
+  },
+  {
+    "id": 97,
+    "difficulty": "hard",
+    "tags": [
+      "threat-modeling",
+      "risk",
+      "threat-modeling-&-risk-assessment"
+    ],
+    "question": "What is the most defensive first step when improving threat modeling & risk assessment?",
+    "options": [
+      "Identify critical assets and current exposure",
+      "Purchase tools before defining requirements",
+      "Grant broad access to speed deployment",
+      "Skip documentation until after incidents"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "You should begin with asset and risk visibility so controls are prioritized effectively."
+  },
+  {
+    "id": 98,
+    "difficulty": "hard",
+    "tags": [
+      "threat-modeling",
+      "risk",
+      "threat-modeling-&-risk-assessment"
+    ],
+    "question": "Which metric is most useful to track threat modeling & risk assessment program health?",
+    "options": [
+      "Time to detect and remediate security issues",
+      "Number of unread policy documents",
+      "Count of disabled security alerts",
+      "Total amount of internet traffic"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Detection and remediation time directly indicate operational security effectiveness."
+  },
+  {
+    "id": 99,
+    "difficulty": "hard",
+    "tags": [
+      "threat-modeling",
+      "risk",
+      "threat-modeling-&-risk-assessment"
+    ],
+    "question": "In threat modeling & risk assessment, what practice most supports continuous improvement?",
+    "options": [
+      "Run regular reviews and update controls from lessons learned",
+      "Freeze controls permanently after first deployment",
+      "Ignore near-miss events because no breach occurred",
+      "Avoid cross-team communication to reduce meetings"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Review cycles and lessons learned make defensive controls adapt to changing threats."
+  },
+  {
+    "id": 100,
+    "difficulty": "hard",
+    "tags": [
+      "threat-modeling",
+      "risk",
+      "threat-modeling-&-risk-assessment"
+    ],
+    "question": "Which statement about threat modeling & risk assessment is most accurate?",
+    "options": [
+      "Security is an ongoing process combining people, process, and technology",
+      "Security is solved once a single product is installed",
+      "Security can be delegated entirely to one department",
+      "Security controls are unnecessary in low-risk periods"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Sustainable security requires ongoing governance, operations, and technical controls."
+  }
+];
+const state = { quiz: [], current: 0, answers: [], started: false, instant: true, revealed: false };
+const el = {
+  mode: document.getElementById('mode'), instant: document.getElementById('instantToggle'), start: document.getElementById('startBtn'),
+  reset: document.getElementById('resetBtn'), questionBox: document.getElementById('questionBox'), actions: document.getElementById('actions'),
+  status: document.getElementById('status'), best: document.getElementById('bestScore'), history: document.getElementById('history')
+};
+const storageKey = 'offlineQuizCyber_v1';
+function shuffle(arr){ const a=[...arr]; for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
+function buildQuiz(count){ return shuffle(QUESTION_BANK).slice(0,count).map(q=>{ const indexed=q.options.map((text,idx)=>({text,originalIndex:idx})); const so=shuffle(indexed); const correctAnswerIndex=so.findIndex(o=>o.originalIndex===q.correctAnswerIndex); return {...q, options: so.map(o=>o.text), correctAnswerIndex}; }); }
+function readStore(){ const fallback={best:0,attempts:[]}; try{return JSON.parse(localStorage.getItem(storageKey))||fallback;}catch{return fallback;} }
+function writeStore(data){ localStorage.setItem(storageKey, JSON.stringify(data)); }
+function renderMeta(){ const store=readStore(); el.best.textContent=`${store.best}%`; if(!store.attempts.length){ el.history.innerHTML='<em>No attempts yet.</em>'; return;} el.history.innerHTML='<ul>'+store.attempts.slice().reverse().map(a=>`<li>${a.date} • ${a.mode}Q • Score: <strong>${a.score}/${a.total}</strong> (${a.percent}%)</li>`).join('')+'</ul>'; }
+function startQuiz(){ state.instant=el.instant.checked; const count=Number(el.mode.value); state.quiz=buildQuiz(count); state.current=0; state.answers=Array(count).fill(null); state.started=true; state.revealed=false; render(); }
+function answerCurrent(idx){ state.answers[state.current]=idx; if(state.instant) state.revealed=true; render(); }
+function nextQuestion(){ state.revealed=false; if(state.current<state.quiz.length-1){ state.current+=1; render(); } else submitQuiz(); }
+function submitQuiz(){ const total=state.quiz.length; let score=0; state.quiz.forEach((q,i)=>{ if(state.answers[i]===q.correctAnswerIndex) score++; }); const percent=Math.round((score/total)*100); const store=readStore(); const best=Math.max(store.best,percent); const attempts=[...store.attempts,{date:new Date().toLocaleString(),mode:total,score,total,percent}].slice(-30); writeStore({best,attempts}); el.status.innerHTML=`<span class="pill">Final Score: ${score}/${total} (${percent}%)</span>`; el.questionBox.innerHTML=state.quiz.map((q,i)=>{ const user=state.answers[i]; const correct=q.correctAnswerIndex; const ok=user===correct; return `<div class="feedback ${ok?'good':'bad'}"><strong>Q${i+1}.</strong> ${q.question}<br><span class="muted">Your answer: ${user===null?'Not answered':q.options[user]}</span><br><span>Correct answer: <strong>${q.options[correct]}</strong></span><br><span class="muted">Explanation: ${q.explanation}</span></div>`; }).join(''); el.actions.innerHTML='<button class="primary" onclick="startQuiz()">Try Again</button>'; state.started=false; renderMeta(); }
+function render(){ renderMeta(); if(!state.started){ el.status.innerHTML=`<span class="pill">Ready • ${QUESTION_BANK.length} total questions loaded</span>`; el.questionBox.innerHTML='<p class="muted">Choose mode and press <strong>Start / Restart</strong>.</p>'; el.actions.innerHTML=''; return; } const q=state.quiz[state.current]; const picked=state.answers[state.current]; const answered=picked!==null; el.status.innerHTML=`<span class="pill">Question ${state.current+1} / ${state.quiz.length}</span><span class="pill">Difficulty: ${q.difficulty}</span><span class="pill">Tags: ${q.tags.join(', ')}</span>`; const optionsHtml=q.options.map((opt,idx)=>{ let cls='opt'; if(state.revealed){ if(idx===q.correctAnswerIndex) cls+=' correct'; else if(idx===picked) cls+=' wrong'; } return `<label class="${cls}"><input type="radio" name="answer" ${picked===idx?'checked':''} onchange="answerCurrent(${idx})" /><span>${opt}</span></label>`; }).join(''); let feedback=''; if(state.revealed&&answered){ const ok=picked===q.correctAnswerIndex; feedback=`<div class="feedback ${ok?'good':'bad'}"><strong>${ok?'Correct':'Not quite'}</strong><br>Correct answer: <strong>${q.options[q.correctAnswerIndex]}</strong><br><span class="muted">${q.explanation}</span></div>`; } el.questionBox.innerHTML=`<div class="q">${q.question}</div><div class="opts">${optionsHtml}</div>${feedback}`; const btnText=state.current===state.quiz.length-1?(state.instant?'Finish':'Submit Quiz'):'Next'; const reviewBtn=(!state.instant&&answered&&!state.revealed)?'<button onclick="state.revealed=true;render()">Reveal Explanation</button>':''; el.actions.innerHTML=`${reviewBtn}<button class="primary" onclick="${state.current===state.quiz.length-1?'submitQuiz()':'nextQuestion()'}" ${!answered?'disabled':''}>${btnText}</button>`; }
+el.start.addEventListener('click', startQuiz);
+el.reset.addEventListener('click', ()=>{ localStorage.removeItem(storageKey); state.started=false; render(); });
+render();
+</script>
+</body>
+</html>
