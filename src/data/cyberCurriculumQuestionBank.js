@@ -128,4 +128,7 @@ export const curriculumQuestionSummary = {
   total: cyberCurriculumQuestionSet.length,
   mcq: generatedMcq.length,
   essay: generatedEssay.length,
+  showLearningMeta: true,
+  learningDuration: '12 minggu',
+  rhythm: '3 sesi / minggu (90 menit)',
 };
