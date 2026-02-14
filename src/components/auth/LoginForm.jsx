@@ -10,7 +10,7 @@ const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const { login, loading, error } = useAuth();
+  const { login, loginAsRole, loading, error } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -44,6 +44,16 @@ const LoginForm = () => {
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
+  };
+
+
+  const handleQuickLogin = async (role) => {
+    try {
+      await loginAsRole(role);
+      navigate('/dashboard');
+    } catch (err) {
+      console.error('Quick login failed:', err);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -80,6 +90,16 @@ const LoginForm = () => {
         </div>
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+          <div className="rounded-lg border border-cyan-500/30 bg-cyan-500/10 p-4">
+            <p className="text-sm text-cyan-200 font-medium">Bypass / Auto Login Cepat</p>
+            <p className="text-xs text-gray-400 mt-1">Masuk instan sebagai Siswa, Mentor, atau Admin untuk demo.</p>
+            <div className="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <button type="button" onClick={() => handleQuickLogin('student')} className="px-3 py-2 rounded-md bg-dark-700 hover:bg-dark-600 text-sm text-white border border-dark-600">Masuk Siswa</button>
+              <button type="button" onClick={() => handleQuickLogin('mentor')} className="px-3 py-2 rounded-md bg-dark-700 hover:bg-dark-600 text-sm text-white border border-dark-600">Masuk Mentor</button>
+              <button type="button" onClick={() => handleQuickLogin('admin')} className="px-3 py-2 rounded-md bg-dark-700 hover:bg-dark-600 text-sm text-white border border-dark-600">Masuk Admin</button>
+            </div>
+          </div>
+
           {error && (
             <div className="bg-red-900/50 border border-red-500 text-red-200 px-4 py-3 rounded-lg">
               {error}

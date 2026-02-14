@@ -9,6 +9,7 @@ import WhatsNew from './pages/WhatsNew';
 import Downloads from './pages/Downloads';
 import Tutorials from './pages/Tutorials';
 import Guides from './pages/Guides';
+import QuestionBank from './pages/QuestionBank';
 import Anticheat from './pages/Anticheat';
 import Info from './pages/Info';
 import Contact from './pages/Contact';
@@ -17,6 +18,7 @@ import Privacy from './pages/Privacy';
 import NotFound from './pages/NotFound';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
@@ -35,6 +37,7 @@ function App() {
             <Route path="downloads" element={<Downloads />} />
             <Route path="tutorials" element={<Tutorials />} />
             <Route path="guides" element={<Guides />} />
+            <Route path="question-bank" element={<QuestionBank />} />
             <Route path="anticheat" element={<Anticheat />} />
             <Route path="info" element={<Info />} />
             <Route path="contact" element={<Contact />} />
@@ -46,13 +49,7 @@ function App() {
               path="dashboard" 
               element={
                 <ProtectedRoute>
-                  <div className="min-h-screen bg-dark-900 text-white p-8">
-                    <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
-                    <div className="bg-dark-800 rounded-lg p-6">
-                      <p>Welcome to your dashboard! This is a protected area.</p>
-                      <p className="text-gray-400 mt-2">User role: { /* Will be populated by context */ }</p>
-                    </div>
-                  </div>
+                  <Dashboard />
                 </ProtectedRoute>
               } 
             />
