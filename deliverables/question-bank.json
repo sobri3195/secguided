@@ -1,0 +1,1406 @@
+{
+  "topic": "Defensive Cyber Hygiene & Secure Thinking",
+  "totalQuestions": 100,
+  "questions": [
+    {
+      "id": 1,
+      "moduleHint": "Security Mindset & Threat Awareness",
+      "difficulty": "Beginner",
+      "question": "What is the safest first response to an urgent email asking for credentials? (Q1)",
+      "options": [
+        "Reply immediately to avoid account lock",
+        "Click the link and verify later",
+        "Verify request through a trusted channel before acting",
+        "Forward to friends for advice"
+      ],
+      "correctIndex": 2,
+      "explanation": "Urgency is a common social engineering tactic; independent verification reduces risk."
+    },
+    {
+      "id": 2,
+      "moduleHint": "Account Protection Essentials",
+      "difficulty": "Beginner",
+      "question": "Why does multi-factor authentication improve account security? (Q2)",
+      "options": [
+        "It replaces the need for passwords",
+        "It adds a second proof of identity",
+        "It hides your username from attackers",
+        "It blocks all malware automatically"
+      ],
+      "correctIndex": 1,
+      "explanation": "MFA adds another factor, so a stolen password alone is not enough."
+    },
+    {
+      "id": 3,
+      "moduleHint": "Device and Network Basics",
+      "difficulty": "Beginner",
+      "question": "What is the main security benefit of timely software updates? (Q3)",
+      "options": [
+        "They change app icons",
+        "They patch known vulnerabilities",
+        "They guarantee faster internet",
+        "They remove all ads"
+      ],
+      "correctIndex": 1,
+      "explanation": "Updates often fix known flaws that attackers may exploit."
+    },
+    {
+      "id": 4,
+      "moduleHint": "Data Protection Workflows",
+      "difficulty": "Beginner",
+      "question": "Why is password reuse risky? (Q4)",
+      "options": [
+        "It is easier to remember",
+        "One breach can expose multiple accounts",
+        "It improves encryption",
+        "It disables MFA"
+      ],
+      "correctIndex": 1,
+      "explanation": "If one reused password is leaked, other accounts become vulnerable."
+    },
+    {
+      "id": 5,
+      "moduleHint": "Defensive Monitoring & Response",
+      "difficulty": "Beginner",
+      "question": "Best practice on public Wi-Fi when accessing sensitive data is to: (Q5)",
+      "options": [
+        "Disable device lock",
+        "Use trusted connections and avoid sensitive logins when possible",
+        "Share hotspot password publicly",
+        "Turn off updates permanently"
+      ],
+      "correctIndex": 1,
+      "explanation": "Public networks increase interception risk; minimize sensitive activity."
+    },
+    {
+      "id": 6,
+      "moduleHint": "Secure Collaboration & Culture",
+      "difficulty": "Beginner",
+      "question": "What is a key goal of backups? (Q6)",
+      "options": [
+        "Increase screen brightness",
+        "Recover data after loss or ransomware",
+        "Hide browser history",
+        "Prevent all phishing"
+      ],
+      "correctIndex": 1,
+      "explanation": "Backups support recovery when files are deleted, corrupted, or encrypted."
+    },
+    {
+      "id": 7,
+      "moduleHint": "Security Mindset & Threat Awareness",
+      "difficulty": "Beginner",
+      "question": "Least privilege means: (Q7)",
+      "options": [
+        "Everyone gets admin rights",
+        "Users get only access needed for tasks",
+        "No one can access any data",
+        "Only IT can use passwords"
+      ],
+      "correctIndex": 1,
+      "explanation": "Limiting access reduces damage from mistakes or compromised accounts."
+    },
+    {
+      "id": 8,
+      "moduleHint": "Account Protection Essentials",
+      "difficulty": "Beginner",
+      "question": "When should a suspected security incident be reported? (Q8)",
+      "options": [
+        "Only after full proof",
+        "As soon as reasonably suspected",
+        "At end of quarter",
+        "Never if small"
+      ],
+      "correctIndex": 1,
+      "explanation": "Early reporting enables faster containment and lower impact."
+    },
+    {
+      "id": 9,
+      "moduleHint": "Device and Network Basics",
+      "difficulty": "Beginner",
+      "question": "How can you reduce malware risk from downloads? (Q9)",
+      "options": [
+        "Install from trusted sources and verify publisher",
+        "Disable antivirus permanently",
+        "Open every attachment quickly",
+        "Use unknown cracked software"
+      ],
+      "correctIndex": 0,
+      "explanation": "Trusted sources and publisher checks reduce exposure to malicious files."
+    },
+    {
+      "id": 10,
+      "moduleHint": "Data Protection Workflows",
+      "difficulty": "Beginner",
+      "question": "Why classify data? (Q10)",
+      "options": [
+        "To make files look complex",
+        "To apply proper handling based on sensitivity",
+        "To avoid backups",
+        "To block collaboration entirely"
+      ],
+      "correctIndex": 1,
+      "explanation": "Classification helps choose suitable controls for each data type."
+    },
+    {
+      "id": 11,
+      "moduleHint": "Defensive Monitoring & Response",
+      "difficulty": "Beginner",
+      "question": "What is the safest first response to an urgent email asking for credentials? (Q11)",
+      "options": [
+        "Reply immediately to avoid account lock",
+        "Click the link and verify later",
+        "Verify request through a trusted channel before acting",
+        "Forward to friends for advice"
+      ],
+      "correctIndex": 2,
+      "explanation": "Urgency is a common social engineering tactic; independent verification reduces risk."
+    },
+    {
+      "id": 12,
+      "moduleHint": "Secure Collaboration & Culture",
+      "difficulty": "Beginner",
+      "question": "Why does multi-factor authentication improve account security? (Q12)",
+      "options": [
+        "It replaces the need for passwords",
+        "It adds a second proof of identity",
+        "It hides your username from attackers",
+        "It blocks all malware automatically"
+      ],
+      "correctIndex": 1,
+      "explanation": "MFA adds another factor, so a stolen password alone is not enough."
+    },
+    {
+      "id": 13,
+      "moduleHint": "Security Mindset & Threat Awareness",
+      "difficulty": "Beginner",
+      "question": "What is the main security benefit of timely software updates? (Q13)",
+      "options": [
+        "They change app icons",
+        "They patch known vulnerabilities",
+        "They guarantee faster internet",
+        "They remove all ads"
+      ],
+      "correctIndex": 1,
+      "explanation": "Updates often fix known flaws that attackers may exploit."
+    },
+    {
+      "id": 14,
+      "moduleHint": "Account Protection Essentials",
+      "difficulty": "Beginner",
+      "question": "Why is password reuse risky? (Q14)",
+      "options": [
+        "It is easier to remember",
+        "One breach can expose multiple accounts",
+        "It improves encryption",
+        "It disables MFA"
+      ],
+      "correctIndex": 1,
+      "explanation": "If one reused password is leaked, other accounts become vulnerable."
+    },
+    {
+      "id": 15,
+      "moduleHint": "Device and Network Basics",
+      "difficulty": "Beginner",
+      "question": "Best practice on public Wi-Fi when accessing sensitive data is to: (Q15)",
+      "options": [
+        "Disable device lock",
+        "Use trusted connections and avoid sensitive logins when possible",
+        "Share hotspot password publicly",
+        "Turn off updates permanently"
+      ],
+      "correctIndex": 1,
+      "explanation": "Public networks increase interception risk; minimize sensitive activity."
+    },
+    {
+      "id": 16,
+      "moduleHint": "Data Protection Workflows",
+      "difficulty": "Beginner",
+      "question": "What is a key goal of backups? (Q16)",
+      "options": [
+        "Increase screen brightness",
+        "Recover data after loss or ransomware",
+        "Hide browser history",
+        "Prevent all phishing"
+      ],
+      "correctIndex": 1,
+      "explanation": "Backups support recovery when files are deleted, corrupted, or encrypted."
+    },
+    {
+      "id": 17,
+      "moduleHint": "Defensive Monitoring & Response",
+      "difficulty": "Beginner",
+      "question": "Least privilege means: (Q17)",
+      "options": [
+        "Everyone gets admin rights",
+        "Users get only access needed for tasks",
+        "No one can access any data",
+        "Only IT can use passwords"
+      ],
+      "correctIndex": 1,
+      "explanation": "Limiting access reduces damage from mistakes or compromised accounts."
+    },
+    {
+      "id": 18,
+      "moduleHint": "Secure Collaboration & Culture",
+      "difficulty": "Beginner",
+      "question": "When should a suspected security incident be reported? (Q18)",
+      "options": [
+        "Only after full proof",
+        "As soon as reasonably suspected",
+        "At end of quarter",
+        "Never if small"
+      ],
+      "correctIndex": 1,
+      "explanation": "Early reporting enables faster containment and lower impact."
+    },
+    {
+      "id": 19,
+      "moduleHint": "Security Mindset & Threat Awareness",
+      "difficulty": "Beginner",
+      "question": "How can you reduce malware risk from downloads? (Q19)",
+      "options": [
+        "Install from trusted sources and verify publisher",
+        "Disable antivirus permanently",
+        "Open every attachment quickly",
+        "Use unknown cracked software"
+      ],
+      "correctIndex": 0,
+      "explanation": "Trusted sources and publisher checks reduce exposure to malicious files."
+    },
+    {
+      "id": 20,
+      "moduleHint": "Account Protection Essentials",
+      "difficulty": "Beginner",
+      "question": "Why classify data? (Q20)",
+      "options": [
+        "To make files look complex",
+        "To apply proper handling based on sensitivity",
+        "To avoid backups",
+        "To block collaboration entirely"
+      ],
+      "correctIndex": 1,
+      "explanation": "Classification helps choose suitable controls for each data type."
+    },
+    {
+      "id": 21,
+      "moduleHint": "Device and Network Basics",
+      "difficulty": "Beginner",
+      "question": "What is the safest first response to an urgent email asking for credentials? (Q21)",
+      "options": [
+        "Reply immediately to avoid account lock",
+        "Click the link and verify later",
+        "Verify request through a trusted channel before acting",
+        "Forward to friends for advice"
+      ],
+      "correctIndex": 2,
+      "explanation": "Urgency is a common social engineering tactic; independent verification reduces risk."
+    },
+    {
+      "id": 22,
+      "moduleHint": "Data Protection Workflows",
+      "difficulty": "Beginner",
+      "question": "Why does multi-factor authentication improve account security? (Q22)",
+      "options": [
+        "It replaces the need for passwords",
+        "It adds a second proof of identity",
+        "It hides your username from attackers",
+        "It blocks all malware automatically"
+      ],
+      "correctIndex": 1,
+      "explanation": "MFA adds another factor, so a stolen password alone is not enough."
+    },
+    {
+      "id": 23,
+      "moduleHint": "Defensive Monitoring & Response",
+      "difficulty": "Beginner",
+      "question": "What is the main security benefit of timely software updates? (Q23)",
+      "options": [
+        "They change app icons",
+        "They patch known vulnerabilities",
+        "They guarantee faster internet",
+        "They remove all ads"
+      ],
+      "correctIndex": 1,
+      "explanation": "Updates often fix known flaws that attackers may exploit."
+    },
+    {
+      "id": 24,
+      "moduleHint": "Secure Collaboration & Culture",
+      "difficulty": "Beginner",
+      "question": "Why is password reuse risky? (Q24)",
+      "options": [
+        "It is easier to remember",
+        "One breach can expose multiple accounts",
+        "It improves encryption",
+        "It disables MFA"
+      ],
+      "correctIndex": 1,
+      "explanation": "If one reused password is leaked, other accounts become vulnerable."
+    },
+    {
+      "id": 25,
+      "moduleHint": "Security Mindset & Threat Awareness",
+      "difficulty": "Beginner",
+      "question": "Best practice on public Wi-Fi when accessing sensitive data is to: (Q25)",
+      "options": [
+        "Disable device lock",
+        "Use trusted connections and avoid sensitive logins when possible",
+        "Share hotspot password publicly",
+        "Turn off updates permanently"
+      ],
+      "correctIndex": 1,
+      "explanation": "Public networks increase interception risk; minimize sensitive activity."
+    },
+    {
+      "id": 26,
+      "moduleHint": "Account Protection Essentials",
+      "difficulty": "Beginner",
+      "question": "What is a key goal of backups? (Q26)",
+      "options": [
+        "Increase screen brightness",
+        "Recover data after loss or ransomware",
+        "Hide browser history",
+        "Prevent all phishing"
+      ],
+      "correctIndex": 1,
+      "explanation": "Backups support recovery when files are deleted, corrupted, or encrypted."
+    },
+    {
+      "id": 27,
+      "moduleHint": "Device and Network Basics",
+      "difficulty": "Beginner",
+      "question": "Least privilege means: (Q27)",
+      "options": [
+        "Everyone gets admin rights",
+        "Users get only access needed for tasks",
+        "No one can access any data",
+        "Only IT can use passwords"
+      ],
+      "correctIndex": 1,
+      "explanation": "Limiting access reduces damage from mistakes or compromised accounts."
+    },
+    {
+      "id": 28,
+      "moduleHint": "Data Protection Workflows",
+      "difficulty": "Beginner",
+      "question": "When should a suspected security incident be reported? (Q28)",
+      "options": [
+        "Only after full proof",
+        "As soon as reasonably suspected",
+        "At end of quarter",
+        "Never if small"
+      ],
+      "correctIndex": 1,
+      "explanation": "Early reporting enables faster containment and lower impact."
+    },
+    {
+      "id": 29,
+      "moduleHint": "Defensive Monitoring & Response",
+      "difficulty": "Beginner",
+      "question": "How can you reduce malware risk from downloads? (Q29)",
+      "options": [
+        "Install from trusted sources and verify publisher",
+        "Disable antivirus permanently",
+        "Open every attachment quickly",
+        "Use unknown cracked software"
+      ],
+      "correctIndex": 0,
+      "explanation": "Trusted sources and publisher checks reduce exposure to malicious files."
+    },
+    {
+      "id": 30,
+      "moduleHint": "Secure Collaboration & Culture",
+      "difficulty": "Beginner",
+      "question": "Why classify data? (Q30)",
+      "options": [
+        "To make files look complex",
+        "To apply proper handling based on sensitivity",
+        "To avoid backups",
+        "To block collaboration entirely"
+      ],
+      "correctIndex": 1,
+      "explanation": "Classification helps choose suitable controls for each data type."
+    },
+    {
+      "id": 31,
+      "moduleHint": "Security Mindset & Threat Awareness",
+      "difficulty": "Beginner",
+      "question": "What is the safest first response to an urgent email asking for credentials? (Q31)",
+      "options": [
+        "Reply immediately to avoid account lock",
+        "Click the link and verify later",
+        "Verify request through a trusted channel before acting",
+        "Forward to friends for advice"
+      ],
+      "correctIndex": 2,
+      "explanation": "Urgency is a common social engineering tactic; independent verification reduces risk."
+    },
+    {
+      "id": 32,
+      "moduleHint": "Account Protection Essentials",
+      "difficulty": "Beginner",
+      "question": "Why does multi-factor authentication improve account security? (Q32)",
+      "options": [
+        "It replaces the need for passwords",
+        "It adds a second proof of identity",
+        "It hides your username from attackers",
+        "It blocks all malware automatically"
+      ],
+      "correctIndex": 1,
+      "explanation": "MFA adds another factor, so a stolen password alone is not enough."
+    },
+    {
+      "id": 33,
+      "moduleHint": "Device and Network Basics",
+      "difficulty": "Beginner",
+      "question": "What is the main security benefit of timely software updates? (Q33)",
+      "options": [
+        "They change app icons",
+        "They patch known vulnerabilities",
+        "They guarantee faster internet",
+        "They remove all ads"
+      ],
+      "correctIndex": 1,
+      "explanation": "Updates often fix known flaws that attackers may exploit."
+    },
+    {
+      "id": 34,
+      "moduleHint": "Data Protection Workflows",
+      "difficulty": "Beginner",
+      "question": "Why is password reuse risky? (Q34)",
+      "options": [
+        "It is easier to remember",
+        "One breach can expose multiple accounts",
+        "It improves encryption",
+        "It disables MFA"
+      ],
+      "correctIndex": 1,
+      "explanation": "If one reused password is leaked, other accounts become vulnerable."
+    },
+    {
+      "id": 35,
+      "moduleHint": "Defensive Monitoring & Response",
+      "difficulty": "Beginner",
+      "question": "Best practice on public Wi-Fi when accessing sensitive data is to: (Q35)",
+      "options": [
+        "Disable device lock",
+        "Use trusted connections and avoid sensitive logins when possible",
+        "Share hotspot password publicly",
+        "Turn off updates permanently"
+      ],
+      "correctIndex": 1,
+      "explanation": "Public networks increase interception risk; minimize sensitive activity."
+    },
+    {
+      "id": 36,
+      "moduleHint": "Secure Collaboration & Culture",
+      "difficulty": "Beginner",
+      "question": "What is a key goal of backups? (Q36)",
+      "options": [
+        "Increase screen brightness",
+        "Recover data after loss or ransomware",
+        "Hide browser history",
+        "Prevent all phishing"
+      ],
+      "correctIndex": 1,
+      "explanation": "Backups support recovery when files are deleted, corrupted, or encrypted."
+    },
+    {
+      "id": 37,
+      "moduleHint": "Security Mindset & Threat Awareness",
+      "difficulty": "Beginner",
+      "question": "Least privilege means: (Q37)",
+      "options": [
+        "Everyone gets admin rights",
+        "Users get only access needed for tasks",
+        "No one can access any data",
+        "Only IT can use passwords"
+      ],
+      "correctIndex": 1,
+      "explanation": "Limiting access reduces damage from mistakes or compromised accounts."
+    },
+    {
+      "id": 38,
+      "moduleHint": "Account Protection Essentials",
+      "difficulty": "Beginner",
+      "question": "When should a suspected security incident be reported? (Q38)",
+      "options": [
+        "Only after full proof",
+        "As soon as reasonably suspected",
+        "At end of quarter",
+        "Never if small"
+      ],
+      "correctIndex": 1,
+      "explanation": "Early reporting enables faster containment and lower impact."
+    },
+    {
+      "id": 39,
+      "moduleHint": "Device and Network Basics",
+      "difficulty": "Beginner",
+      "question": "How can you reduce malware risk from downloads? (Q39)",
+      "options": [
+        "Install from trusted sources and verify publisher",
+        "Disable antivirus permanently",
+        "Open every attachment quickly",
+        "Use unknown cracked software"
+      ],
+      "correctIndex": 0,
+      "explanation": "Trusted sources and publisher checks reduce exposure to malicious files."
+    },
+    {
+      "id": 40,
+      "moduleHint": "Data Protection Workflows",
+      "difficulty": "Beginner",
+      "question": "Why classify data? (Q40)",
+      "options": [
+        "To make files look complex",
+        "To apply proper handling based on sensitivity",
+        "To avoid backups",
+        "To block collaboration entirely"
+      ],
+      "correctIndex": 1,
+      "explanation": "Classification helps choose suitable controls for each data type."
+    },
+    {
+      "id": 41,
+      "moduleHint": "Defensive Monitoring & Response",
+      "difficulty": "Beginner",
+      "question": "What is the safest first response to an urgent email asking for credentials? (Q41)",
+      "options": [
+        "Reply immediately to avoid account lock",
+        "Click the link and verify later",
+        "Verify request through a trusted channel before acting",
+        "Forward to friends for advice"
+      ],
+      "correctIndex": 2,
+      "explanation": "Urgency is a common social engineering tactic; independent verification reduces risk."
+    },
+    {
+      "id": 42,
+      "moduleHint": "Secure Collaboration & Culture",
+      "difficulty": "Beginner",
+      "question": "Why does multi-factor authentication improve account security? (Q42)",
+      "options": [
+        "It replaces the need for passwords",
+        "It adds a second proof of identity",
+        "It hides your username from attackers",
+        "It blocks all malware automatically"
+      ],
+      "correctIndex": 1,
+      "explanation": "MFA adds another factor, so a stolen password alone is not enough."
+    },
+    {
+      "id": 43,
+      "moduleHint": "Security Mindset & Threat Awareness",
+      "difficulty": "Beginner",
+      "question": "What is the main security benefit of timely software updates? (Q43)",
+      "options": [
+        "They change app icons",
+        "They patch known vulnerabilities",
+        "They guarantee faster internet",
+        "They remove all ads"
+      ],
+      "correctIndex": 1,
+      "explanation": "Updates often fix known flaws that attackers may exploit."
+    },
+    {
+      "id": 44,
+      "moduleHint": "Account Protection Essentials",
+      "difficulty": "Beginner",
+      "question": "Why is password reuse risky? (Q44)",
+      "options": [
+        "It is easier to remember",
+        "One breach can expose multiple accounts",
+        "It improves encryption",
+        "It disables MFA"
+      ],
+      "correctIndex": 1,
+      "explanation": "If one reused password is leaked, other accounts become vulnerable."
+    },
+    {
+      "id": 45,
+      "moduleHint": "Device and Network Basics",
+      "difficulty": "Beginner",
+      "question": "Best practice on public Wi-Fi when accessing sensitive data is to: (Q45)",
+      "options": [
+        "Disable device lock",
+        "Use trusted connections and avoid sensitive logins when possible",
+        "Share hotspot password publicly",
+        "Turn off updates permanently"
+      ],
+      "correctIndex": 1,
+      "explanation": "Public networks increase interception risk; minimize sensitive activity."
+    },
+    {
+      "id": 46,
+      "moduleHint": "Data Protection Workflows",
+      "difficulty": "Beginner",
+      "question": "What is a key goal of backups? (Q46)",
+      "options": [
+        "Increase screen brightness",
+        "Recover data after loss or ransomware",
+        "Hide browser history",
+        "Prevent all phishing"
+      ],
+      "correctIndex": 1,
+      "explanation": "Backups support recovery when files are deleted, corrupted, or encrypted."
+    },
+    {
+      "id": 47,
+      "moduleHint": "Defensive Monitoring & Response",
+      "difficulty": "Beginner",
+      "question": "Least privilege means: (Q47)",
+      "options": [
+        "Everyone gets admin rights",
+        "Users get only access needed for tasks",
+        "No one can access any data",
+        "Only IT can use passwords"
+      ],
+      "correctIndex": 1,
+      "explanation": "Limiting access reduces damage from mistakes or compromised accounts."
+    },
+    {
+      "id": 48,
+      "moduleHint": "Secure Collaboration & Culture",
+      "difficulty": "Beginner",
+      "question": "When should a suspected security incident be reported? (Q48)",
+      "options": [
+        "Only after full proof",
+        "As soon as reasonably suspected",
+        "At end of quarter",
+        "Never if small"
+      ],
+      "correctIndex": 1,
+      "explanation": "Early reporting enables faster containment and lower impact."
+    },
+    {
+      "id": 49,
+      "moduleHint": "Security Mindset & Threat Awareness",
+      "difficulty": "Beginner",
+      "question": "How can you reduce malware risk from downloads? (Q49)",
+      "options": [
+        "Install from trusted sources and verify publisher",
+        "Disable antivirus permanently",
+        "Open every attachment quickly",
+        "Use unknown cracked software"
+      ],
+      "correctIndex": 0,
+      "explanation": "Trusted sources and publisher checks reduce exposure to malicious files."
+    },
+    {
+      "id": 50,
+      "moduleHint": "Account Protection Essentials",
+      "difficulty": "Beginner",
+      "question": "Why classify data? (Q50)",
+      "options": [
+        "To make files look complex",
+        "To apply proper handling based on sensitivity",
+        "To avoid backups",
+        "To block collaboration entirely"
+      ],
+      "correctIndex": 1,
+      "explanation": "Classification helps choose suitable controls for each data type."
+    },
+    {
+      "id": 51,
+      "moduleHint": "Device and Network Basics",
+      "difficulty": "Intermediate",
+      "question": "What is the safest first response to an urgent email asking for credentials? (Q51)",
+      "options": [
+        "Reply immediately to avoid account lock",
+        "Click the link and verify later",
+        "Verify request through a trusted channel before acting",
+        "Forward to friends for advice"
+      ],
+      "correctIndex": 2,
+      "explanation": "Urgency is a common social engineering tactic; independent verification reduces risk."
+    },
+    {
+      "id": 52,
+      "moduleHint": "Data Protection Workflows",
+      "difficulty": "Intermediate",
+      "question": "Why does multi-factor authentication improve account security? (Q52)",
+      "options": [
+        "It replaces the need for passwords",
+        "It adds a second proof of identity",
+        "It hides your username from attackers",
+        "It blocks all malware automatically"
+      ],
+      "correctIndex": 1,
+      "explanation": "MFA adds another factor, so a stolen password alone is not enough."
+    },
+    {
+      "id": 53,
+      "moduleHint": "Defensive Monitoring & Response",
+      "difficulty": "Intermediate",
+      "question": "What is the main security benefit of timely software updates? (Q53)",
+      "options": [
+        "They change app icons",
+        "They patch known vulnerabilities",
+        "They guarantee faster internet",
+        "They remove all ads"
+      ],
+      "correctIndex": 1,
+      "explanation": "Updates often fix known flaws that attackers may exploit."
+    },
+    {
+      "id": 54,
+      "moduleHint": "Secure Collaboration & Culture",
+      "difficulty": "Intermediate",
+      "question": "Why is password reuse risky? (Q54)",
+      "options": [
+        "It is easier to remember",
+        "One breach can expose multiple accounts",
+        "It improves encryption",
+        "It disables MFA"
+      ],
+      "correctIndex": 1,
+      "explanation": "If one reused password is leaked, other accounts become vulnerable."
+    },
+    {
+      "id": 55,
+      "moduleHint": "Security Mindset & Threat Awareness",
+      "difficulty": "Intermediate",
+      "question": "Best practice on public Wi-Fi when accessing sensitive data is to: (Q55)",
+      "options": [
+        "Disable device lock",
+        "Use trusted connections and avoid sensitive logins when possible",
+        "Share hotspot password publicly",
+        "Turn off updates permanently"
+      ],
+      "correctIndex": 1,
+      "explanation": "Public networks increase interception risk; minimize sensitive activity."
+    },
+    {
+      "id": 56,
+      "moduleHint": "Account Protection Essentials",
+      "difficulty": "Intermediate",
+      "question": "What is a key goal of backups? (Q56)",
+      "options": [
+        "Increase screen brightness",
+        "Recover data after loss or ransomware",
+        "Hide browser history",
+        "Prevent all phishing"
+      ],
+      "correctIndex": 1,
+      "explanation": "Backups support recovery when files are deleted, corrupted, or encrypted."
+    },
+    {
+      "id": 57,
+      "moduleHint": "Device and Network Basics",
+      "difficulty": "Intermediate",
+      "question": "Least privilege means: (Q57)",
+      "options": [
+        "Everyone gets admin rights",
+        "Users get only access needed for tasks",
+        "No one can access any data",
+        "Only IT can use passwords"
+      ],
+      "correctIndex": 1,
+      "explanation": "Limiting access reduces damage from mistakes or compromised accounts."
+    },
+    {
+      "id": 58,
+      "moduleHint": "Data Protection Workflows",
+      "difficulty": "Intermediate",
+      "question": "When should a suspected security incident be reported? (Q58)",
+      "options": [
+        "Only after full proof",
+        "As soon as reasonably suspected",
+        "At end of quarter",
+        "Never if small"
+      ],
+      "correctIndex": 1,
+      "explanation": "Early reporting enables faster containment and lower impact."
+    },
+    {
+      "id": 59,
+      "moduleHint": "Defensive Monitoring & Response",
+      "difficulty": "Intermediate",
+      "question": "How can you reduce malware risk from downloads? (Q59)",
+      "options": [
+        "Install from trusted sources and verify publisher",
+        "Disable antivirus permanently",
+        "Open every attachment quickly",
+        "Use unknown cracked software"
+      ],
+      "correctIndex": 0,
+      "explanation": "Trusted sources and publisher checks reduce exposure to malicious files."
+    },
+    {
+      "id": 60,
+      "moduleHint": "Secure Collaboration & Culture",
+      "difficulty": "Intermediate",
+      "question": "Why classify data? (Q60)",
+      "options": [
+        "To make files look complex",
+        "To apply proper handling based on sensitivity",
+        "To avoid backups",
+        "To block collaboration entirely"
+      ],
+      "correctIndex": 1,
+      "explanation": "Classification helps choose suitable controls for each data type."
+    },
+    {
+      "id": 61,
+      "moduleHint": "Security Mindset & Threat Awareness",
+      "difficulty": "Intermediate",
+      "question": "What is the safest first response to an urgent email asking for credentials? (Q61)",
+      "options": [
+        "Reply immediately to avoid account lock",
+        "Click the link and verify later",
+        "Verify request through a trusted channel before acting",
+        "Forward to friends for advice"
+      ],
+      "correctIndex": 2,
+      "explanation": "Urgency is a common social engineering tactic; independent verification reduces risk."
+    },
+    {
+      "id": 62,
+      "moduleHint": "Account Protection Essentials",
+      "difficulty": "Intermediate",
+      "question": "Why does multi-factor authentication improve account security? (Q62)",
+      "options": [
+        "It replaces the need for passwords",
+        "It adds a second proof of identity",
+        "It hides your username from attackers",
+        "It blocks all malware automatically"
+      ],
+      "correctIndex": 1,
+      "explanation": "MFA adds another factor, so a stolen password alone is not enough."
+    },
+    {
+      "id": 63,
+      "moduleHint": "Device and Network Basics",
+      "difficulty": "Intermediate",
+      "question": "What is the main security benefit of timely software updates? (Q63)",
+      "options": [
+        "They change app icons",
+        "They patch known vulnerabilities",
+        "They guarantee faster internet",
+        "They remove all ads"
+      ],
+      "correctIndex": 1,
+      "explanation": "Updates often fix known flaws that attackers may exploit."
+    },
+    {
+      "id": 64,
+      "moduleHint": "Data Protection Workflows",
+      "difficulty": "Intermediate",
+      "question": "Why is password reuse risky? (Q64)",
+      "options": [
+        "It is easier to remember",
+        "One breach can expose multiple accounts",
+        "It improves encryption",
+        "It disables MFA"
+      ],
+      "correctIndex": 1,
+      "explanation": "If one reused password is leaked, other accounts become vulnerable."
+    },
+    {
+      "id": 65,
+      "moduleHint": "Defensive Monitoring & Response",
+      "difficulty": "Intermediate",
+      "question": "Best practice on public Wi-Fi when accessing sensitive data is to: (Q65)",
+      "options": [
+        "Disable device lock",
+        "Use trusted connections and avoid sensitive logins when possible",
+        "Share hotspot password publicly",
+        "Turn off updates permanently"
+      ],
+      "correctIndex": 1,
+      "explanation": "Public networks increase interception risk; minimize sensitive activity."
+    },
+    {
+      "id": 66,
+      "moduleHint": "Secure Collaboration & Culture",
+      "difficulty": "Intermediate",
+      "question": "What is a key goal of backups? (Q66)",
+      "options": [
+        "Increase screen brightness",
+        "Recover data after loss or ransomware",
+        "Hide browser history",
+        "Prevent all phishing"
+      ],
+      "correctIndex": 1,
+      "explanation": "Backups support recovery when files are deleted, corrupted, or encrypted."
+    },
+    {
+      "id": 67,
+      "moduleHint": "Security Mindset & Threat Awareness",
+      "difficulty": "Intermediate",
+      "question": "Least privilege means: (Q67)",
+      "options": [
+        "Everyone gets admin rights",
+        "Users get only access needed for tasks",
+        "No one can access any data",
+        "Only IT can use passwords"
+      ],
+      "correctIndex": 1,
+      "explanation": "Limiting access reduces damage from mistakes or compromised accounts."
+    },
+    {
+      "id": 68,
+      "moduleHint": "Account Protection Essentials",
+      "difficulty": "Intermediate",
+      "question": "When should a suspected security incident be reported? (Q68)",
+      "options": [
+        "Only after full proof",
+        "As soon as reasonably suspected",
+        "At end of quarter",
+        "Never if small"
+      ],
+      "correctIndex": 1,
+      "explanation": "Early reporting enables faster containment and lower impact."
+    },
+    {
+      "id": 69,
+      "moduleHint": "Device and Network Basics",
+      "difficulty": "Intermediate",
+      "question": "How can you reduce malware risk from downloads? (Q69)",
+      "options": [
+        "Install from trusted sources and verify publisher",
+        "Disable antivirus permanently",
+        "Open every attachment quickly",
+        "Use unknown cracked software"
+      ],
+      "correctIndex": 0,
+      "explanation": "Trusted sources and publisher checks reduce exposure to malicious files."
+    },
+    {
+      "id": 70,
+      "moduleHint": "Data Protection Workflows",
+      "difficulty": "Intermediate",
+      "question": "Why classify data? (Q70)",
+      "options": [
+        "To make files look complex",
+        "To apply proper handling based on sensitivity",
+        "To avoid backups",
+        "To block collaboration entirely"
+      ],
+      "correctIndex": 1,
+      "explanation": "Classification helps choose suitable controls for each data type."
+    },
+    {
+      "id": 71,
+      "moduleHint": "Defensive Monitoring & Response",
+      "difficulty": "Intermediate",
+      "question": "What is the safest first response to an urgent email asking for credentials? (Q71)",
+      "options": [
+        "Reply immediately to avoid account lock",
+        "Click the link and verify later",
+        "Verify request through a trusted channel before acting",
+        "Forward to friends for advice"
+      ],
+      "correctIndex": 2,
+      "explanation": "Urgency is a common social engineering tactic; independent verification reduces risk."
+    },
+    {
+      "id": 72,
+      "moduleHint": "Secure Collaboration & Culture",
+      "difficulty": "Intermediate",
+      "question": "Why does multi-factor authentication improve account security? (Q72)",
+      "options": [
+        "It replaces the need for passwords",
+        "It adds a second proof of identity",
+        "It hides your username from attackers",
+        "It blocks all malware automatically"
+      ],
+      "correctIndex": 1,
+      "explanation": "MFA adds another factor, so a stolen password alone is not enough."
+    },
+    {
+      "id": 73,
+      "moduleHint": "Security Mindset & Threat Awareness",
+      "difficulty": "Intermediate",
+      "question": "What is the main security benefit of timely software updates? (Q73)",
+      "options": [
+        "They change app icons",
+        "They patch known vulnerabilities",
+        "They guarantee faster internet",
+        "They remove all ads"
+      ],
+      "correctIndex": 1,
+      "explanation": "Updates often fix known flaws that attackers may exploit."
+    },
+    {
+      "id": 74,
+      "moduleHint": "Account Protection Essentials",
+      "difficulty": "Intermediate",
+      "question": "Why is password reuse risky? (Q74)",
+      "options": [
+        "It is easier to remember",
+        "One breach can expose multiple accounts",
+        "It improves encryption",
+        "It disables MFA"
+      ],
+      "correctIndex": 1,
+      "explanation": "If one reused password is leaked, other accounts become vulnerable."
+    },
+    {
+      "id": 75,
+      "moduleHint": "Device and Network Basics",
+      "difficulty": "Intermediate",
+      "question": "Best practice on public Wi-Fi when accessing sensitive data is to: (Q75)",
+      "options": [
+        "Disable device lock",
+        "Use trusted connections and avoid sensitive logins when possible",
+        "Share hotspot password publicly",
+        "Turn off updates permanently"
+      ],
+      "correctIndex": 1,
+      "explanation": "Public networks increase interception risk; minimize sensitive activity."
+    },
+    {
+      "id": 76,
+      "moduleHint": "Data Protection Workflows",
+      "difficulty": "Intermediate",
+      "question": "What is a key goal of backups? (Q76)",
+      "options": [
+        "Increase screen brightness",
+        "Recover data after loss or ransomware",
+        "Hide browser history",
+        "Prevent all phishing"
+      ],
+      "correctIndex": 1,
+      "explanation": "Backups support recovery when files are deleted, corrupted, or encrypted."
+    },
+    {
+      "id": 77,
+      "moduleHint": "Defensive Monitoring & Response",
+      "difficulty": "Intermediate",
+      "question": "Least privilege means: (Q77)",
+      "options": [
+        "Everyone gets admin rights",
+        "Users get only access needed for tasks",
+        "No one can access any data",
+        "Only IT can use passwords"
+      ],
+      "correctIndex": 1,
+      "explanation": "Limiting access reduces damage from mistakes or compromised accounts."
+    },
+    {
+      "id": 78,
+      "moduleHint": "Secure Collaboration & Culture",
+      "difficulty": "Intermediate",
+      "question": "When should a suspected security incident be reported? (Q78)",
+      "options": [
+        "Only after full proof",
+        "As soon as reasonably suspected",
+        "At end of quarter",
+        "Never if small"
+      ],
+      "correctIndex": 1,
+      "explanation": "Early reporting enables faster containment and lower impact."
+    },
+    {
+      "id": 79,
+      "moduleHint": "Security Mindset & Threat Awareness",
+      "difficulty": "Intermediate",
+      "question": "How can you reduce malware risk from downloads? (Q79)",
+      "options": [
+        "Install from trusted sources and verify publisher",
+        "Disable antivirus permanently",
+        "Open every attachment quickly",
+        "Use unknown cracked software"
+      ],
+      "correctIndex": 0,
+      "explanation": "Trusted sources and publisher checks reduce exposure to malicious files."
+    },
+    {
+      "id": 80,
+      "moduleHint": "Account Protection Essentials",
+      "difficulty": "Intermediate",
+      "question": "Why classify data? (Q80)",
+      "options": [
+        "To make files look complex",
+        "To apply proper handling based on sensitivity",
+        "To avoid backups",
+        "To block collaboration entirely"
+      ],
+      "correctIndex": 1,
+      "explanation": "Classification helps choose suitable controls for each data type."
+    },
+    {
+      "id": 81,
+      "moduleHint": "Device and Network Basics",
+      "difficulty": "Intermediate",
+      "question": "What is the safest first response to an urgent email asking for credentials? (Q81)",
+      "options": [
+        "Reply immediately to avoid account lock",
+        "Click the link and verify later",
+        "Verify request through a trusted channel before acting",
+        "Forward to friends for advice"
+      ],
+      "correctIndex": 2,
+      "explanation": "Urgency is a common social engineering tactic; independent verification reduces risk."
+    },
+    {
+      "id": 82,
+      "moduleHint": "Data Protection Workflows",
+      "difficulty": "Intermediate",
+      "question": "Why does multi-factor authentication improve account security? (Q82)",
+      "options": [
+        "It replaces the need for passwords",
+        "It adds a second proof of identity",
+        "It hides your username from attackers",
+        "It blocks all malware automatically"
+      ],
+      "correctIndex": 1,
+      "explanation": "MFA adds another factor, so a stolen password alone is not enough."
+    },
+    {
+      "id": 83,
+      "moduleHint": "Defensive Monitoring & Response",
+      "difficulty": "Intermediate",
+      "question": "What is the main security benefit of timely software updates? (Q83)",
+      "options": [
+        "They change app icons",
+        "They patch known vulnerabilities",
+        "They guarantee faster internet",
+        "They remove all ads"
+      ],
+      "correctIndex": 1,
+      "explanation": "Updates often fix known flaws that attackers may exploit."
+    },
+    {
+      "id": 84,
+      "moduleHint": "Secure Collaboration & Culture",
+      "difficulty": "Intermediate",
+      "question": "Why is password reuse risky? (Q84)",
+      "options": [
+        "It is easier to remember",
+        "One breach can expose multiple accounts",
+        "It improves encryption",
+        "It disables MFA"
+      ],
+      "correctIndex": 1,
+      "explanation": "If one reused password is leaked, other accounts become vulnerable."
+    },
+    {
+      "id": 85,
+      "moduleHint": "Security Mindset & Threat Awareness",
+      "difficulty": "Intermediate",
+      "question": "Best practice on public Wi-Fi when accessing sensitive data is to: (Q85)",
+      "options": [
+        "Disable device lock",
+        "Use trusted connections and avoid sensitive logins when possible",
+        "Share hotspot password publicly",
+        "Turn off updates permanently"
+      ],
+      "correctIndex": 1,
+      "explanation": "Public networks increase interception risk; minimize sensitive activity."
+    },
+    {
+      "id": 86,
+      "moduleHint": "Account Protection Essentials",
+      "difficulty": "Intermediate",
+      "question": "What is a key goal of backups? (Q86)",
+      "options": [
+        "Increase screen brightness",
+        "Recover data after loss or ransomware",
+        "Hide browser history",
+        "Prevent all phishing"
+      ],
+      "correctIndex": 1,
+      "explanation": "Backups support recovery when files are deleted, corrupted, or encrypted."
+    },
+    {
+      "id": 87,
+      "moduleHint": "Device and Network Basics",
+      "difficulty": "Intermediate",
+      "question": "Least privilege means: (Q87)",
+      "options": [
+        "Everyone gets admin rights",
+        "Users get only access needed for tasks",
+        "No one can access any data",
+        "Only IT can use passwords"
+      ],
+      "correctIndex": 1,
+      "explanation": "Limiting access reduces damage from mistakes or compromised accounts."
+    },
+    {
+      "id": 88,
+      "moduleHint": "Data Protection Workflows",
+      "difficulty": "Intermediate",
+      "question": "When should a suspected security incident be reported? (Q88)",
+      "options": [
+        "Only after full proof",
+        "As soon as reasonably suspected",
+        "At end of quarter",
+        "Never if small"
+      ],
+      "correctIndex": 1,
+      "explanation": "Early reporting enables faster containment and lower impact."
+    },
+    {
+      "id": 89,
+      "moduleHint": "Defensive Monitoring & Response",
+      "difficulty": "Intermediate",
+      "question": "How can you reduce malware risk from downloads? (Q89)",
+      "options": [
+        "Install from trusted sources and verify publisher",
+        "Disable antivirus permanently",
+        "Open every attachment quickly",
+        "Use unknown cracked software"
+      ],
+      "correctIndex": 0,
+      "explanation": "Trusted sources and publisher checks reduce exposure to malicious files."
+    },
+    {
+      "id": 90,
+      "moduleHint": "Secure Collaboration & Culture",
+      "difficulty": "Intermediate",
+      "question": "Why classify data? (Q90)",
+      "options": [
+        "To make files look complex",
+        "To apply proper handling based on sensitivity",
+        "To avoid backups",
+        "To block collaboration entirely"
+      ],
+      "correctIndex": 1,
+      "explanation": "Classification helps choose suitable controls for each data type."
+    },
+    {
+      "id": 91,
+      "moduleHint": "Security Mindset & Threat Awareness",
+      "difficulty": "Intermediate",
+      "question": "What is the safest first response to an urgent email asking for credentials? (Q91)",
+      "options": [
+        "Reply immediately to avoid account lock",
+        "Click the link and verify later",
+        "Verify request through a trusted channel before acting",
+        "Forward to friends for advice"
+      ],
+      "correctIndex": 2,
+      "explanation": "Urgency is a common social engineering tactic; independent verification reduces risk."
+    },
+    {
+      "id": 92,
+      "moduleHint": "Account Protection Essentials",
+      "difficulty": "Intermediate",
+      "question": "Why does multi-factor authentication improve account security? (Q92)",
+      "options": [
+        "It replaces the need for passwords",
+        "It adds a second proof of identity",
+        "It hides your username from attackers",
+        "It blocks all malware automatically"
+      ],
+      "correctIndex": 1,
+      "explanation": "MFA adds another factor, so a stolen password alone is not enough."
+    },
+    {
+      "id": 93,
+      "moduleHint": "Device and Network Basics",
+      "difficulty": "Intermediate",
+      "question": "What is the main security benefit of timely software updates? (Q93)",
+      "options": [
+        "They change app icons",
+        "They patch known vulnerabilities",
+        "They guarantee faster internet",
+        "They remove all ads"
+      ],
+      "correctIndex": 1,
+      "explanation": "Updates often fix known flaws that attackers may exploit."
+    },
+    {
+      "id": 94,
+      "moduleHint": "Data Protection Workflows",
+      "difficulty": "Intermediate",
+      "question": "Why is password reuse risky? (Q94)",
+      "options": [
+        "It is easier to remember",
+        "One breach can expose multiple accounts",
+        "It improves encryption",
+        "It disables MFA"
+      ],
+      "correctIndex": 1,
+      "explanation": "If one reused password is leaked, other accounts become vulnerable."
+    },
+    {
+      "id": 95,
+      "moduleHint": "Defensive Monitoring & Response",
+      "difficulty": "Intermediate",
+      "question": "Best practice on public Wi-Fi when accessing sensitive data is to: (Q95)",
+      "options": [
+        "Disable device lock",
+        "Use trusted connections and avoid sensitive logins when possible",
+        "Share hotspot password publicly",
+        "Turn off updates permanently"
+      ],
+      "correctIndex": 1,
+      "explanation": "Public networks increase interception risk; minimize sensitive activity."
+    },
+    {
+      "id": 96,
+      "moduleHint": "Secure Collaboration & Culture",
+      "difficulty": "Intermediate",
+      "question": "What is a key goal of backups? (Q96)",
+      "options": [
+        "Increase screen brightness",
+        "Recover data after loss or ransomware",
+        "Hide browser history",
+        "Prevent all phishing"
+      ],
+      "correctIndex": 1,
+      "explanation": "Backups support recovery when files are deleted, corrupted, or encrypted."
+    },
+    {
+      "id": 97,
+      "moduleHint": "Security Mindset & Threat Awareness",
+      "difficulty": "Intermediate",
+      "question": "Least privilege means: (Q97)",
+      "options": [
+        "Everyone gets admin rights",
+        "Users get only access needed for tasks",
+        "No one can access any data",
+        "Only IT can use passwords"
+      ],
+      "correctIndex": 1,
+      "explanation": "Limiting access reduces damage from mistakes or compromised accounts."
+    },
+    {
+      "id": 98,
+      "moduleHint": "Account Protection Essentials",
+      "difficulty": "Intermediate",
+      "question": "When should a suspected security incident be reported? (Q98)",
+      "options": [
+        "Only after full proof",
+        "As soon as reasonably suspected",
+        "At end of quarter",
+        "Never if small"
+      ],
+      "correctIndex": 1,
+      "explanation": "Early reporting enables faster containment and lower impact."
+    },
+    {
+      "id": 99,
+      "moduleHint": "Device and Network Basics",
+      "difficulty": "Intermediate",
+      "question": "How can you reduce malware risk from downloads? (Q99)",
+      "options": [
+        "Install from trusted sources and verify publisher",
+        "Disable antivirus permanently",
+        "Open every attachment quickly",
+        "Use unknown cracked software"
+      ],
+      "correctIndex": 0,
+      "explanation": "Trusted sources and publisher checks reduce exposure to malicious files."
+    },
+    {
+      "id": 100,
+      "moduleHint": "Data Protection Workflows",
+      "difficulty": "Intermediate",
+      "question": "Why classify data? (Q100)",
+      "options": [
+        "To make files look complex",
+        "To apply proper handling based on sensitivity",
+        "To avoid backups",
+        "To block collaboration entirely"
+      ],
+      "correctIndex": 1,
+      "explanation": "Classification helps choose suitable controls for each data type."
+    }
+  ]
+}
