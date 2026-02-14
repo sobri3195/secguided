@@ -47,6 +47,27 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+
+  const loginAsRole = async (role) => {
+    try {
+      setError(null);
+      setLoading(true);
+
+      const response = await authService.loginAsRole(role);
+
+      setUser(response.user);
+      authService.setToken(response.token);
+      authService.setUser(response.user);
+
+      return response;
+    } catch (err) {
+      setError(err.message || 'Quick login failed');
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const register = async (userData) => {
     try {
       setError(null);
@@ -93,6 +114,7 @@ export const AuthProvider = ({ children }) => {
     loading,
     error,
     login,
+    loginAsRole,
     register,
     logout,
     updateProfile,

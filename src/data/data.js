@@ -214,6 +214,7 @@ export const navItems = [
   { name: "What's New", href: '/whats-new' },
   { name: 'Downloads', href: '/downloads' },
   { name: 'Tutorials', href: '/tutorials' },
+  { name: 'Bank Soal', href: '/question-bank' },
   { name: 'Guides', href: '/guides' },
   { name: 'Anticheat', href: '/anticheat' },
   { name: 'Info', href: '/info' },

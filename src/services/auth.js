@@ -36,6 +36,19 @@ class AuthService {
   }
 
   // Simulate API call - replace with actual fetch calls
+  createMockUser(email, role = 'student') {
+    return {
+      id: Date.now().toString(),
+      email,
+      username: email.split('@')[0],
+      firstName: role === 'admin' ? 'Admin' : role === 'mentor' ? 'Mentor' : 'Siswa',
+      lastName: 'SecGuided',
+      role,
+      createdAt: new Date().toISOString(),
+      lastLogin: new Date().toISOString(),
+    };
+  }
+
   async login(email, password) {
     // Mock delay to simulate network request
     await new Promise(resolve => setTimeout(resolve, 1000));
@@ -50,16 +63,8 @@ class AuthService {
     }
 
     // Mock user authentication - replace with actual API call
-    const mockUser = {
-      id: '1',
-      email: email,
-      username: email.split('@')[0],
-      firstName: 'John',
-      lastName: 'Doe',
-      role: 'student',
-      createdAt: new Date().toISOString(),
-      lastLogin: new Date().toISOString(),
-    };
+    const normalizedRole = email.includes('admin') ? 'admin' : email.includes('mentor') ? 'mentor' : 'student';
+    const mockUser = this.createMockUser(email, normalizedRole);
 
     const mockToken = 'mock-jwt-token-' + Date.now();
 
@@ -83,6 +88,25 @@ class AuthService {
       user: mockUser,
       token: mockToken,
       message: 'Login successful',
+    };
+  }
+
+
+  async loginAsRole(role) {
+    await new Promise(resolve => setTimeout(resolve, 200));
+
+    const allowedRoles = ['student', 'mentor', 'admin'];
+    if (!allowedRoles.includes(role)) {
+      throw new Error('Role tidak valid untuk quick login');
+    }
+
+    const mockUser = this.createMockUser(`${role}@secguided.local`, role);
+    const mockToken = `mock-jwt-token-${role}-${Date.now()}`;
+
+    return {
+      user: mockUser,
+      token: mockToken,
+      message: `Quick login ${role} berhasil`,
     };
   }
 

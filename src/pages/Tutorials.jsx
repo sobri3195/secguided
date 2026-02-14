@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import { latestPosts, popularSections } from '../data/data';
 
@@ -13,6 +14,16 @@ const Tutorials = () => {
 
       <section className="bg-dark-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="mb-8 bg-dark-800 border border-cyan-500/30 rounded-xl p-6 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div>
+              <h2 className="text-white font-semibold text-xl">Bank Soal Cyber Security</h2>
+              <p className="text-gray-400 text-sm mt-2">Latihan 300 soal siap pakai dengan kurikulum 20 chapter (Siswa, Mentor, dan Admin bisa langsung akses).</p>
+            </div>
+            <Link to="/question-bank" className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-medium transition-colors">
+              Buka Bank Soal
+            </Link>
+          </div>
+
           <h2 className="text-white font-semibold text-xl mb-6">Popular Topics</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {popularSections.map((s) => (
