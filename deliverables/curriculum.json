@@ -1,0 +1,265 @@
+{
+  "topic": "Defensive Cyber Hygiene & Secure Thinking",
+  "language": "English",
+  "audience": "Beginner to Intermediate",
+  "modules": [
+    {
+      "id": "B1",
+      "level": "Beginner",
+      "title": "Security Mindset & Threat Awareness",
+      "lessons": [
+        {
+          "id": "B1-L1",
+          "title": "What Security Means in Daily Digital Life",
+          "durationMinutes": 18,
+          "content": "This lesson introduces practical security decisions you can apply immediately without technical tools. Instead of treating security as a one-time setup, think of it as a daily habit loop: notice risks, choose a safer action, and verify outcomes. Beginners often focus only on passwords, but modern protection also involves how you click links, share files, and respond to urgency. You will learn to slow down when a message pressures you, check context before acting, and use simple controls that reduce mistakes. The goal is not paranoia; it is confidence. By the end, you should be able to explain why a small preventive action\u2014such as verifying a sender or updating an app\u2014can block larger problems later. Keep examples tied to your own devices and accounts so you can translate concepts into routine behavior. In what security means in daily digital life, focus on one improvement you can apply this week, then record what changed after seven days.",
+          "safeExamples": [
+            "Pause before clicking links and verify the sender through a known contact channel.",
+            "Use built-in device security settings like screen lock, updates, and app permissions.",
+            "Share files with least-privilege access so only required people can open or edit."
+          ],
+          "exercisePrompt": "Write a 5-step checklist you can use this week to apply this lesson in a real scenario."
+        },
+        {
+          "id": "B1-L2",
+          "title": "Common Threats: Phishing, Malware, and Social Engineering",
+          "durationMinutes": 18,
+          "content": "This lesson introduces practical security decisions you can apply immediately without technical tools. Instead of treating security as a one-time setup, think of it as a daily habit loop: notice risks, choose a safer action, and verify outcomes. Beginners often focus only on passwords, but modern protection also involves how you click links, share files, and respond to urgency. You will learn to slow down when a message pressures you, check context before acting, and use simple controls that reduce mistakes. The goal is not paranoia; it is confidence. By the end, you should be able to explain why a small preventive action\u2014such as verifying a sender or updating an app\u2014can block larger problems later. Keep examples tied to your own devices and accounts so you can translate concepts into routine behavior. In common threats: phishing, malware, and social engineering, focus on one improvement you can apply this week, then record what changed after seven days.",
+          "safeExamples": [
+            "Pause before clicking links and verify the sender through a known contact channel.",
+            "Use built-in device security settings like screen lock, updates, and app permissions.",
+            "Share files with least-privilege access so only required people can open or edit."
+          ],
+          "exercisePrompt": "Write a 5-step checklist you can use this week to apply this lesson in a real scenario."
+        },
+        {
+          "id": "B1-L3",
+          "title": "Risk vs. Impact: Prioritizing What to Protect",
+          "durationMinutes": 18,
+          "content": "This lesson introduces practical security decisions you can apply immediately without technical tools. Instead of treating security as a one-time setup, think of it as a daily habit loop: notice risks, choose a safer action, and verify outcomes. Beginners often focus only on passwords, but modern protection also involves how you click links, share files, and respond to urgency. You will learn to slow down when a message pressures you, check context before acting, and use simple controls that reduce mistakes. The goal is not paranoia; it is confidence. By the end, you should be able to explain why a small preventive action\u2014such as verifying a sender or updating an app\u2014can block larger problems later. Keep examples tied to your own devices and accounts so you can translate concepts into routine behavior. In risk vs. impact: prioritizing what to protect, focus on one improvement you can apply this week, then record what changed after seven days.",
+          "safeExamples": [
+            "Pause before clicking links and verify the sender through a known contact channel.",
+            "Use built-in device security settings like screen lock, updates, and app permissions.",
+            "Share files with least-privilege access so only required people can open or edit."
+          ],
+          "exercisePrompt": "Write a 5-step checklist you can use this week to apply this lesson in a real scenario."
+        }
+      ]
+    },
+    {
+      "id": "B2",
+      "level": "Beginner",
+      "title": "Account Protection Essentials",
+      "lessons": [
+        {
+          "id": "B2-L1",
+          "title": "Building Strong Passphrases",
+          "durationMinutes": 18,
+          "content": "This lesson introduces practical security decisions you can apply immediately without technical tools. Instead of treating security as a one-time setup, think of it as a daily habit loop: notice risks, choose a safer action, and verify outcomes. Beginners often focus only on passwords, but modern protection also involves how you click links, share files, and respond to urgency. You will learn to slow down when a message pressures you, check context before acting, and use simple controls that reduce mistakes. The goal is not paranoia; it is confidence. By the end, you should be able to explain why a small preventive action\u2014such as verifying a sender or updating an app\u2014can block larger problems later. Keep examples tied to your own devices and accounts so you can translate concepts into routine behavior. In building strong passphrases, focus on one improvement you can apply this week, then record what changed after seven days.",
+          "safeExamples": [
+            "Pause before clicking links and verify the sender through a known contact channel.",
+            "Use built-in device security settings like screen lock, updates, and app permissions.",
+            "Share files with least-privilege access so only required people can open or edit."
+          ],
+          "exercisePrompt": "Write a 5-step checklist you can use this week to apply this lesson in a real scenario."
+        },
+        {
+          "id": "B2-L2",
+          "title": "Multi-Factor Authentication Basics",
+          "durationMinutes": 18,
+          "content": "This lesson introduces practical security decisions you can apply immediately without technical tools. Instead of treating security as a one-time setup, think of it as a daily habit loop: notice risks, choose a safer action, and verify outcomes. Beginners often focus only on passwords, but modern protection also involves how you click links, share files, and respond to urgency. You will learn to slow down when a message pressures you, check context before acting, and use simple controls that reduce mistakes. The goal is not paranoia; it is confidence. By the end, you should be able to explain why a small preventive action\u2014such as verifying a sender or updating an app\u2014can block larger problems later. Keep examples tied to your own devices and accounts so you can translate concepts into routine behavior. In multi-factor authentication basics, focus on one improvement you can apply this week, then record what changed after seven days.",
+          "safeExamples": [
+            "Pause before clicking links and verify the sender through a known contact channel.",
+            "Use built-in device security settings like screen lock, updates, and app permissions.",
+            "Share files with least-privilege access so only required people can open or edit."
+          ],
+          "exercisePrompt": "Write a 5-step checklist you can use this week to apply this lesson in a real scenario."
+        },
+        {
+          "id": "B2-L3",
+          "title": "Safe Credential Handling Across Devices",
+          "durationMinutes": 18,
+          "content": "This lesson introduces practical security decisions you can apply immediately without technical tools. Instead of treating security as a one-time setup, think of it as a daily habit loop: notice risks, choose a safer action, and verify outcomes. Beginners often focus only on passwords, but modern protection also involves how you click links, share files, and respond to urgency. You will learn to slow down when a message pressures you, check context before acting, and use simple controls that reduce mistakes. The goal is not paranoia; it is confidence. By the end, you should be able to explain why a small preventive action\u2014such as verifying a sender or updating an app\u2014can block larger problems later. Keep examples tied to your own devices and accounts so you can translate concepts into routine behavior. In safe credential handling across devices, focus on one improvement you can apply this week, then record what changed after seven days.",
+          "safeExamples": [
+            "Pause before clicking links and verify the sender through a known contact channel.",
+            "Use built-in device security settings like screen lock, updates, and app permissions.",
+            "Share files with least-privilege access so only required people can open or edit."
+          ],
+          "exercisePrompt": "Write a 5-step checklist you can use this week to apply this lesson in a real scenario."
+        }
+      ]
+    },
+    {
+      "id": "B3",
+      "level": "Beginner",
+      "title": "Device and Network Basics",
+      "lessons": [
+        {
+          "id": "B3-L1",
+          "title": "Keeping Software Updated Safely",
+          "durationMinutes": 18,
+          "content": "This lesson introduces practical security decisions you can apply immediately without technical tools. Instead of treating security as a one-time setup, think of it as a daily habit loop: notice risks, choose a safer action, and verify outcomes. Beginners often focus only on passwords, but modern protection also involves how you click links, share files, and respond to urgency. You will learn to slow down when a message pressures you, check context before acting, and use simple controls that reduce mistakes. The goal is not paranoia; it is confidence. By the end, you should be able to explain why a small preventive action\u2014such as verifying a sender or updating an app\u2014can block larger problems later. Keep examples tied to your own devices and accounts so you can translate concepts into routine behavior. In keeping software updated safely, focus on one improvement you can apply this week, then record what changed after seven days.",
+          "safeExamples": [
+            "Pause before clicking links and verify the sender through a known contact channel.",
+            "Use built-in device security settings like screen lock, updates, and app permissions.",
+            "Share files with least-privilege access so only required people can open or edit."
+          ],
+          "exercisePrompt": "Write a 5-step checklist you can use this week to apply this lesson in a real scenario."
+        },
+        {
+          "id": "B3-L2",
+          "title": "Securing Home Wi-Fi and Routers",
+          "durationMinutes": 18,
+          "content": "This lesson introduces practical security decisions you can apply immediately without technical tools. Instead of treating security as a one-time setup, think of it as a daily habit loop: notice risks, choose a safer action, and verify outcomes. Beginners often focus only on passwords, but modern protection also involves how you click links, share files, and respond to urgency. You will learn to slow down when a message pressures you, check context before acting, and use simple controls that reduce mistakes. The goal is not paranoia; it is confidence. By the end, you should be able to explain why a small preventive action\u2014such as verifying a sender or updating an app\u2014can block larger problems later. Keep examples tied to your own devices and accounts so you can translate concepts into routine behavior. In securing home wi-fi and routers, focus on one improvement you can apply this week, then record what changed after seven days.",
+          "safeExamples": [
+            "Pause before clicking links and verify the sender through a known contact channel.",
+            "Use built-in device security settings like screen lock, updates, and app permissions.",
+            "Share files with least-privilege access so only required people can open or edit."
+          ],
+          "exercisePrompt": "Write a 5-step checklist you can use this week to apply this lesson in a real scenario."
+        },
+        {
+          "id": "B3-L3",
+          "title": "Safe Browsing and Download Habits",
+          "durationMinutes": 18,
+          "content": "This lesson introduces practical security decisions you can apply immediately without technical tools. Instead of treating security as a one-time setup, think of it as a daily habit loop: notice risks, choose a safer action, and verify outcomes. Beginners often focus only on passwords, but modern protection also involves how you click links, share files, and respond to urgency. You will learn to slow down when a message pressures you, check context before acting, and use simple controls that reduce mistakes. The goal is not paranoia; it is confidence. By the end, you should be able to explain why a small preventive action\u2014such as verifying a sender or updating an app\u2014can block larger problems later. Keep examples tied to your own devices and accounts so you can translate concepts into routine behavior. In safe browsing and download habits, focus on one improvement you can apply this week, then record what changed after seven days.",
+          "safeExamples": [
+            "Pause before clicking links and verify the sender through a known contact channel.",
+            "Use built-in device security settings like screen lock, updates, and app permissions.",
+            "Share files with least-privilege access so only required people can open or edit."
+          ],
+          "exercisePrompt": "Write a 5-step checklist you can use this week to apply this lesson in a real scenario."
+        }
+      ]
+    },
+    {
+      "id": "I1",
+      "level": "Intermediate",
+      "title": "Data Protection Workflows",
+      "lessons": [
+        {
+          "id": "I1-L1",
+          "title": "Data Classification for Everyday Teams",
+          "durationMinutes": 18,
+          "content": "This lesson moves from personal safety habits to repeatable defensive workflows for teams. Intermediate learners should think in systems: people, process, and tools working together. A single control rarely solves risk; layered controls create resilience. You will practice identifying weak points, deciding who needs access, and documenting response steps before incidents happen. Good security is measurable, so this module emphasizes lightweight checks you can run weekly: review logs, confirm backups, and test communication paths. You will also examine trade-offs between speed and safety, then choose controls that are sustainable in real work environments. The objective is to reduce uncertainty during stressful events by preparing clear decision paths, ownership, and escalation triggers. Each concept remains defensive and operational, focused on prevention, detection, and recovery rather than attack techniques. In data classification for everyday teams, focus on one improvement you can apply this week, then record what changed after seven days. Use a checklist, keep notes brief, and ask a peer to review your process for clarity.",
+          "safeExamples": [
+            "Pause before clicking links and verify the sender through a known contact channel.",
+            "Use built-in device security settings like screen lock, updates, and app permissions.",
+            "Share files with least-privilege access so only required people can open or edit."
+          ],
+          "exercisePrompt": "Write a 5-step checklist you can use this week to apply this lesson in a real scenario."
+        },
+        {
+          "id": "I1-L2",
+          "title": "Secure Sharing and Access Control",
+          "durationMinutes": 18,
+          "content": "This lesson moves from personal safety habits to repeatable defensive workflows for teams. Intermediate learners should think in systems: people, process, and tools working together. A single control rarely solves risk; layered controls create resilience. You will practice identifying weak points, deciding who needs access, and documenting response steps before incidents happen. Good security is measurable, so this module emphasizes lightweight checks you can run weekly: review logs, confirm backups, and test communication paths. You will also examine trade-offs between speed and safety, then choose controls that are sustainable in real work environments. The objective is to reduce uncertainty during stressful events by preparing clear decision paths, ownership, and escalation triggers. Each concept remains defensive and operational, focused on prevention, detection, and recovery rather than attack techniques. In secure sharing and access control, focus on one improvement you can apply this week, then record what changed after seven days. Use a checklist, keep notes brief, and ask a peer to review your process for clarity.",
+          "safeExamples": [
+            "Pause before clicking links and verify the sender through a known contact channel.",
+            "Use built-in device security settings like screen lock, updates, and app permissions.",
+            "Share files with least-privilege access so only required people can open or edit."
+          ],
+          "exercisePrompt": "Write a 5-step checklist you can use this week to apply this lesson in a real scenario."
+        },
+        {
+          "id": "I1-L3",
+          "title": "Backup Strategies and Recovery Drills",
+          "durationMinutes": 18,
+          "content": "This lesson moves from personal safety habits to repeatable defensive workflows for teams. Intermediate learners should think in systems: people, process, and tools working together. A single control rarely solves risk; layered controls create resilience. You will practice identifying weak points, deciding who needs access, and documenting response steps before incidents happen. Good security is measurable, so this module emphasizes lightweight checks you can run weekly: review logs, confirm backups, and test communication paths. You will also examine trade-offs between speed and safety, then choose controls that are sustainable in real work environments. The objective is to reduce uncertainty during stressful events by preparing clear decision paths, ownership, and escalation triggers. Each concept remains defensive and operational, focused on prevention, detection, and recovery rather than attack techniques. In backup strategies and recovery drills, focus on one improvement you can apply this week, then record what changed after seven days. Use a checklist, keep notes brief, and ask a peer to review your process for clarity.",
+          "safeExamples": [
+            "Pause before clicking links and verify the sender through a known contact channel.",
+            "Use built-in device security settings like screen lock, updates, and app permissions.",
+            "Share files with least-privilege access so only required people can open or edit."
+          ],
+          "exercisePrompt": "Write a 5-step checklist you can use this week to apply this lesson in a real scenario."
+        }
+      ]
+    },
+    {
+      "id": "I2",
+      "level": "Intermediate",
+      "title": "Defensive Monitoring & Response",
+      "lessons": [
+        {
+          "id": "I2-L1",
+          "title": "Reading Security Signals and Alerts",
+          "durationMinutes": 18,
+          "content": "This lesson moves from personal safety habits to repeatable defensive workflows for teams. Intermediate learners should think in systems: people, process, and tools working together. A single control rarely solves risk; layered controls create resilience. You will practice identifying weak points, deciding who needs access, and documenting response steps before incidents happen. Good security is measurable, so this module emphasizes lightweight checks you can run weekly: review logs, confirm backups, and test communication paths. You will also examine trade-offs between speed and safety, then choose controls that are sustainable in real work environments. The objective is to reduce uncertainty during stressful events by preparing clear decision paths, ownership, and escalation triggers. Each concept remains defensive and operational, focused on prevention, detection, and recovery rather than attack techniques. In reading security signals and alerts, focus on one improvement you can apply this week, then record what changed after seven days. Use a checklist, keep notes brief, and ask a peer to review your process for clarity.",
+          "safeExamples": [
+            "Pause before clicking links and verify the sender through a known contact channel.",
+            "Use built-in device security settings like screen lock, updates, and app permissions.",
+            "Share files with least-privilege access so only required people can open or edit."
+          ],
+          "exercisePrompt": "Write a 5-step checklist you can use this week to apply this lesson in a real scenario."
+        },
+        {
+          "id": "I2-L2",
+          "title": "Incident Triage: Contain, Communicate, Correct",
+          "durationMinutes": 18,
+          "content": "This lesson moves from personal safety habits to repeatable defensive workflows for teams. Intermediate learners should think in systems: people, process, and tools working together. A single control rarely solves risk; layered controls create resilience. You will practice identifying weak points, deciding who needs access, and documenting response steps before incidents happen. Good security is measurable, so this module emphasizes lightweight checks you can run weekly: review logs, confirm backups, and test communication paths. You will also examine trade-offs between speed and safety, then choose controls that are sustainable in real work environments. The objective is to reduce uncertainty during stressful events by preparing clear decision paths, ownership, and escalation triggers. Each concept remains defensive and operational, focused on prevention, detection, and recovery rather than attack techniques. In incident triage: contain, communicate, correct, focus on one improvement you can apply this week, then record what changed after seven days. Use a checklist, keep notes brief, and ask a peer to review your process for clarity.",
+          "safeExamples": [
+            "Pause before clicking links and verify the sender through a known contact channel.",
+            "Use built-in device security settings like screen lock, updates, and app permissions.",
+            "Share files with least-privilege access so only required people can open or edit."
+          ],
+          "exercisePrompt": "Write a 5-step checklist you can use this week to apply this lesson in a real scenario."
+        },
+        {
+          "id": "I2-L3",
+          "title": "Post-Incident Learning and Playbooks",
+          "durationMinutes": 18,
+          "content": "This lesson moves from personal safety habits to repeatable defensive workflows for teams. Intermediate learners should think in systems: people, process, and tools working together. A single control rarely solves risk; layered controls create resilience. You will practice identifying weak points, deciding who needs access, and documenting response steps before incidents happen. Good security is measurable, so this module emphasizes lightweight checks you can run weekly: review logs, confirm backups, and test communication paths. You will also examine trade-offs between speed and safety, then choose controls that are sustainable in real work environments. The objective is to reduce uncertainty during stressful events by preparing clear decision paths, ownership, and escalation triggers. Each concept remains defensive and operational, focused on prevention, detection, and recovery rather than attack techniques. In post-incident learning and playbooks, focus on one improvement you can apply this week, then record what changed after seven days. Use a checklist, keep notes brief, and ask a peer to review your process for clarity.",
+          "safeExamples": [
+            "Pause before clicking links and verify the sender through a known contact channel.",
+            "Use built-in device security settings like screen lock, updates, and app permissions.",
+            "Share files with least-privilege access so only required people can open or edit."
+          ],
+          "exercisePrompt": "Write a 5-step checklist you can use this week to apply this lesson in a real scenario."
+        }
+      ]
+    },
+    {
+      "id": "I3",
+      "level": "Intermediate",
+      "title": "Secure Collaboration & Culture",
+      "lessons": [
+        {
+          "id": "I3-L1",
+          "title": "Security in Remote and Hybrid Work",
+          "durationMinutes": 18,
+          "content": "This lesson moves from personal safety habits to repeatable defensive workflows for teams. Intermediate learners should think in systems: people, process, and tools working together. A single control rarely solves risk; layered controls create resilience. You will practice identifying weak points, deciding who needs access, and documenting response steps before incidents happen. Good security is measurable, so this module emphasizes lightweight checks you can run weekly: review logs, confirm backups, and test communication paths. You will also examine trade-offs between speed and safety, then choose controls that are sustainable in real work environments. The objective is to reduce uncertainty during stressful events by preparing clear decision paths, ownership, and escalation triggers. Each concept remains defensive and operational, focused on prevention, detection, and recovery rather than attack techniques. In security in remote and hybrid work, focus on one improvement you can apply this week, then record what changed after seven days.",
+          "safeExamples": [
+            "Pause before clicking links and verify the sender through a known contact channel.",
+            "Use built-in device security settings like screen lock, updates, and app permissions.",
+            "Share files with least-privilege access so only required people can open or edit."
+          ],
+          "exercisePrompt": "Write a 5-step checklist you can use this week to apply this lesson in a real scenario."
+        },
+        {
+          "id": "I3-L2",
+          "title": "Vendor and Third-Party Risk Basics",
+          "durationMinutes": 18,
+          "content": "This lesson moves from personal safety habits to repeatable defensive workflows for teams. Intermediate learners should think in systems: people, process, and tools working together. A single control rarely solves risk; layered controls create resilience. You will practice identifying weak points, deciding who needs access, and documenting response steps before incidents happen. Good security is measurable, so this module emphasizes lightweight checks you can run weekly: review logs, confirm backups, and test communication paths. You will also examine trade-offs between speed and safety, then choose controls that are sustainable in real work environments. The objective is to reduce uncertainty during stressful events by preparing clear decision paths, ownership, and escalation triggers. Each concept remains defensive and operational, focused on prevention, detection, and recovery rather than attack techniques. In vendor and third-party risk basics, focus on one improvement you can apply this week, then record what changed after seven days. Use a checklist, keep notes brief, and ask a peer to review your process for clarity.",
+          "safeExamples": [
+            "Pause before clicking links and verify the sender through a known contact channel.",
+            "Use built-in device security settings like screen lock, updates, and app permissions.",
+            "Share files with least-privilege access so only required people can open or edit."
+          ],
+          "exercisePrompt": "Write a 5-step checklist you can use this week to apply this lesson in a real scenario."
+        },
+        {
+          "id": "I3-L3",
+          "title": "Building Team Habits that Reduce Human Error",
+          "durationMinutes": 18,
+          "content": "This lesson moves from personal safety habits to repeatable defensive workflows for teams. Intermediate learners should think in systems: people, process, and tools working together. A single control rarely solves risk; layered controls create resilience. You will practice identifying weak points, deciding who needs access, and documenting response steps before incidents happen. Good security is measurable, so this module emphasizes lightweight checks you can run weekly: review logs, confirm backups, and test communication paths. You will also examine trade-offs between speed and safety, then choose controls that are sustainable in real work environments. The objective is to reduce uncertainty during stressful events by preparing clear decision paths, ownership, and escalation triggers. Each concept remains defensive and operational, focused on prevention, detection, and recovery rather than attack techniques. In building team habits that reduce human error, focus on one improvement you can apply this week, then record what changed after seven days.",
+          "safeExamples": [
+            "Pause before clicking links and verify the sender through a known contact channel.",
+            "Use built-in device security settings like screen lock, updates, and app permissions.",
+            "Share files with least-privilege access so only required people can open or edit."
+          ],
+          "exercisePrompt": "Write a 5-step checklist you can use this week to apply this lesson in a real scenario."
+        }
+      ]
+    }
+  ]
+}
