@@ -1,6 +1,85 @@
 import React, { useMemo, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 
+const MATERIAL_CATALOG = [
+  {
+    id: 'web-security',
+    title: 'Cyber Website',
+    level: 'Pemula → Menengah',
+    description: 'Belajar SQL Injection, XSS, CSRF, dan secure coding dasar untuk aplikasi web.',
+    topics: ['OWASP Top 10', 'Input validation', 'Session security', 'Bug bounty workflow'],
+    materials: [
+      'Modul 1: Dasar HTTP, cookies, session',
+      'Modul 2: SQLi dan cara pencegahannya',
+      'Modul 3: XSS Stored vs Reflected',
+      'Modul 4: Hardening login & authentication',
+    ],
+    questions: [
+      'Apa perbedaan antara Reflected XSS dan Stored XSS?',
+      'Kenapa prepared statement bisa mencegah SQL Injection?',
+      'Langkah validasi input yang benar pada form login?',
+      'Apa risiko jika cookie session tidak menggunakan HttpOnly?',
+    ],
+  },
+  {
+    id: 'android-security',
+    title: 'Cyber Android',
+    level: 'Menengah',
+    description: 'Fokus ke keamanan aplikasi Android: insecure storage, API abuse, dan reverse engineering dasar.',
+    topics: ['Mobile OWASP', 'Secure storage', 'Certificate pinning', 'APK analysis'],
+    materials: [
+      'Modul 1: Struktur APK dan AndroidManifest',
+      'Modul 2: Penyimpanan aman (Keystore, EncryptedSharedPreferences)',
+      'Modul 3: API protection & token handling',
+      'Modul 4: Runtime protection anti-tampering',
+    ],
+    questions: [
+      'Kenapa hardcoded API key berbahaya di aplikasi Android?',
+      'Apa fungsi certificate pinning?',
+      'Bagaimana cara aman menyimpan refresh token di Android?',
+      'Sebutkan indikator aplikasi Android rentan reverse engineering.',
+    ],
+  },
+  {
+    id: 'wifi-security',
+    title: 'Cyber WiFi',
+    level: 'Pemula → Menengah',
+    description: 'Belajar dasar keamanan jaringan wireless, enkripsi, segmentasi, dan monitoring akses ilegal.',
+    topics: ['WPA2/WPA3', 'Rogue AP', 'Network segmentation', 'Packet analysis'],
+    materials: [
+      'Modul 1: Dasar protokol 802.11',
+      'Modul 2: Perbedaan WPA2 dan WPA3',
+      'Modul 3: Deteksi Evil Twin / Rogue Access Point',
+      'Modul 4: Isolasi client dan VLAN tamu',
+    ],
+    questions: [
+      'Apa kelemahan utama dari WiFi Open tanpa enkripsi?',
+      'Apa yang dimaksud Evil Twin attack?',
+      'Kenapa VLAN tamu penting untuk jaringan kantor?',
+      'Bagaimana langkah respon awal jika ada rogue AP?',
+    ],
+  },
+  {
+    id: 'incident-response',
+    title: 'Incident Response',
+    level: 'Menengah → Lanjutan',
+    description: 'Materi proses incident handling, containment, investigasi, dan pelaporan pasca-insiden.',
+    topics: ['NIST IR lifecycle', 'Containment', 'Forensic basics', 'Post-incident report'],
+    materials: [
+      'Modul 1: Persiapan SOP insiden',
+      'Modul 2: Triage alert prioritas tinggi',
+      'Modul 3: Isolasi endpoint terinfeksi',
+      'Modul 4: Pelaporan RCA dan lesson learned',
+    ],
+    questions: [
+      'Apa tujuan fase containment saat terjadi insiden?',
+      'Sebutkan data minimal yang harus ada di timeline insiden.',
+      'Kapan tim harus melakukan eskalasi ke manajemen?',
+      'Mengapa post-incident review wajib dilakukan?',
+    ],
+  },
+];
+
 const severityFromScore = (score) => {
   if (score >= 85) return 'Critical';
   if (score >= 65) return 'High';
@@ -42,19 +121,78 @@ const ASSET_SUMMARY = [
 
 const findCadence = (severity) => (severity === 'Critical' || severity === 'High' ? 'Harian' : 'Mingguan');
 
-const Dashboard = () => {
-  const { user } = useAuth();
+const StudentDashboard = ({ user }) => {
+  const [selectedMaterialId, setSelectedMaterialId] = useState(MATERIAL_CATALOG[0].id);
+  const selectedMaterial = MATERIAL_CATALOG.find((material) => material.id === selectedMaterialId) || MATERIAL_CATALOG[0];
 
+  return (
+    <div className="min-h-screen bg-dark-900 text-white p-6 md:p-8 space-y-8">
+      <header className="bg-dark-800 rounded-xl border border-dark-700 p-6">
+        <h1 className="text-3xl font-bold mb-3">Dashboard Siswa</h1>
+        <p className="text-gray-300">Mulai pembelajaran dengan memilih materi terlebih dahulu, lalu lanjut ke latihan soal sesuai topik.</p>
+        <p className="text-gray-400 mt-2 text-sm">Login sebagai: <span className="text-cyan-300 capitalize">{user?.role || 'student'}</span> • {user?.email}</p>
+      </header>
+
+      <section className="bg-dark-800 border border-dark-700 rounded-xl p-6 space-y-4">
+        <h2 className="text-xl font-semibold">1) Pilih Materi</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-3">
+          {MATERIAL_CATALOG.map((material) => (
+            <button
+              key={material.id}
+              type="button"
+              onClick={() => setSelectedMaterialId(material.id)}
+              className={`text-left rounded-lg border p-4 transition-colors ${selectedMaterialId === material.id ? 'border-cyan-400 bg-cyan-500/10' : 'border-dark-600 bg-dark-900 hover:border-cyan-700'}`}
+            >
+              <p className="text-sm text-cyan-300">{material.level}</p>
+              <p className="font-semibold mt-1">{material.title}</p>
+              <p className="text-xs text-gray-400 mt-2">{material.description}</p>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+        <article className="bg-dark-800 border border-dark-700 rounded-xl p-6 space-y-4">
+          <h2 className="text-xl font-semibold">2) Materi: {selectedMaterial.title}</h2>
+          <ul className="list-disc list-inside text-gray-300 space-y-2">
+            {selectedMaterial.materials.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+          <div className="rounded-lg bg-dark-900 border border-dark-700 p-4">
+            <p className="text-sm text-gray-400 mb-2">Topik yang akan dipelajari:</p>
+            <div className="flex flex-wrap gap-2">
+              {selectedMaterial.topics.map((topic) => (
+                <span key={topic} className="text-xs px-2 py-1 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-200">{topic}</span>
+              ))}
+            </div>
+          </div>
+        </article>
+
+        <article className="bg-dark-800 border border-dark-700 rounded-xl p-6 space-y-4">
+          <h2 className="text-xl font-semibold">3) Latihan Soal: {selectedMaterial.title}</h2>
+          <ol className="list-decimal list-inside text-gray-200 space-y-3">
+            {selectedMaterial.questions.map((question) => (
+              <li key={question} className="leading-relaxed">{question}</li>
+            ))}
+          </ol>
+          <button type="button" className="px-4 py-2 rounded-md bg-cyan-600 hover:bg-cyan-700 transition-colors text-sm font-medium">
+            Mulai Kuis {selectedMaterial.title}
+          </button>
+        </article>
+      </section>
+    </div>
+  );
+};
+
+const OpsDashboard = ({ user }) => {
   const [factors, setFactors] = useState({ impact: 4, likelihood: 3, asset: 4, exposure: 3, multiplier: 1.0 });
   const [weights, setWeights] = useState({ impact: 0.35, likelihood: 0.3, asset: 0.2, exposure: 0.15 });
   const [mode, setMode] = useState('executive');
   const [findingStatus, setFindingStatus] = useState('In Progress');
   const [openedAt, setOpenedAt] = useState('2026-01-28');
 
-  const weightSum = useMemo(
-    () => Object.values(weights).reduce((sum, value) => sum + Number(value || 0), 0),
-    [weights]
-  );
+  const weightSum = useMemo(() => Object.values(weights).reduce((sum, value) => sum + Number(value || 0), 0), [weights]);
 
   const riskResult = useMemo(() => {
     const weighted =
@@ -102,14 +240,14 @@ const Dashboard = () => {
         findingStatus === 'Open'
           ? 'In Progress'
           : findingStatus === 'In Progress'
-          ? 'Pending Validation'
-          : findingStatus === 'Pending Validation'
-          ? 'Closed'
-          : '-',
+            ? 'Pending Validation'
+            : findingStatus === 'Pending Validation'
+              ? 'Closed'
+              : '-',
     };
   }, [findingStatus, openedAt, riskResult.severity]);
 
-  const onNumberChange = (setter, key, min, max, step = 1) => (event) => {
+  const onNumberChange = (setter, key, min, max) => (event) => {
     const value = Number(event.target.value);
     const clamped = Math.min(max, Math.max(min, value));
     setter((prev) => ({ ...prev, [key]: clamped }));
@@ -130,43 +268,7 @@ const Dashboard = () => {
             {['impact', 'likelihood', 'asset', 'exposure'].map((key) => (
               <label key={key} className="block">
                 <span className="capitalize text-gray-300">{key}</span>
-                <input
-                  type="number"
-                  min="1"
-                  max="5"
-                  value={factors[key]}
-                  onChange={onNumberChange(setFactors, key, 1, 5)}
-                  className="mt-1 w-full rounded bg-dark-900 border border-dark-600 px-3 py-2"
-                />
-              </label>
-            ))}
-            <label className="block col-span-2">
-              <span className="text-gray-300">Threat multiplier (1.0 - 1.3)</span>
-              <input
-                type="number"
-                step="0.1"
-                min="1"
-                max="1.3"
-                value={factors.multiplier}
-                onChange={onNumberChange(setFactors, 'multiplier', 1, 1.3, 0.1)}
-                className="mt-1 w-full rounded bg-dark-900 border border-dark-600 px-3 py-2"
-              />
-            </label>
-          </div>
-
-          <div className="grid grid-cols-2 gap-3 text-sm">
-            {Object.keys(weights).map((key) => (
-              <label key={key} className="block">
-                <span className="capitalize text-gray-300">Weight {key}</span>
-                <input
-                  type="number"
-                  step="0.05"
-                  min="0"
-                  max="1"
-                  value={weights[key]}
-                  onChange={onNumberChange(setWeights, key, 0, 1, 0.05)}
-                  className="mt-1 w-full rounded bg-dark-900 border border-dark-600 px-3 py-2"
-                />
+                <input type="number" min="1" max="5" value={factors[key]} onChange={onNumberChange(setFactors, key, 1, 5)} className="mt-1 w-full rounded bg-dark-900 border border-dark-600 px-3 py-2" />
               </label>
             ))}
           </div>
@@ -182,12 +284,7 @@ const Dashboard = () => {
           <h2 className="text-xl font-semibold">2) Template Laporan Dinamis</h2>
           <div className="flex flex-wrap gap-2">
             {Object.keys(TEMPLATE_LIBRARY).map((key) => (
-              <button
-                type="button"
-                key={key}
-                onClick={() => setMode(key)}
-                className={`px-3 py-2 rounded border text-sm ${mode === key ? 'bg-cyan-500/20 border-cyan-400 text-cyan-200' : 'bg-dark-900 border-dark-600 text-gray-300'}`}
-              >
+              <button type="button" key={key} onClick={() => setMode(key)} className={`px-3 py-2 rounded border text-sm ${mode === key ? 'bg-cyan-500/20 border-cyan-400 text-cyan-200' : 'bg-dark-900 border-dark-600 text-gray-300'}`}>
                 {TEMPLATE_LIBRARY[key].title}
               </button>
             ))}
@@ -200,7 +297,6 @@ const Dashboard = () => {
                 <li key={section}>{section}</li>
               ))}
             </ul>
-            <p className="text-xs text-gray-500 mt-3">Render flow: Data Provider → Template Registry → HTML Renderer → PDF Exporter.</p>
           </div>
         </article>
       </section>
@@ -252,11 +348,7 @@ const Dashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
           <label>
             Status temuan
-            <select
-              value={findingStatus}
-              onChange={(e) => setFindingStatus(e.target.value)}
-              className="mt-1 w-full rounded bg-dark-900 border border-dark-600 px-3 py-2"
-            >
+            <select value={findingStatus} onChange={(e) => setFindingStatus(e.target.value)} className="mt-1 w-full rounded bg-dark-900 border border-dark-600 px-3 py-2">
               <option>Open</option>
               <option>In Progress</option>
               <option>Pending Validation</option>
@@ -266,12 +358,7 @@ const Dashboard = () => {
 
           <label>
             Opened at
-            <input
-              type="date"
-              value={openedAt}
-              onChange={(e) => setOpenedAt(e.target.value)}
-              className="mt-1 w-full rounded bg-dark-900 border border-dark-600 px-3 py-2"
-            />
+            <input type="date" value={openedAt} onChange={(e) => setOpenedAt(e.target.value)} className="mt-1 w-full rounded bg-dark-900 border border-dark-600 px-3 py-2" />
           </label>
 
           <div className="rounded bg-dark-900 border border-dark-700 px-3 py-2">
@@ -283,10 +370,19 @@ const Dashboard = () => {
         </div>
 
         <p className="text-sm text-amber-300">Escalation state: {slaResult.escalation}</p>
-        <p className="text-xs text-gray-500">Audit trail wajib mencatat: from_status, to_status, changed_by, reason, evidence_link, ticket_ref.</p>
       </section>
     </div>
   );
+};
+
+const Dashboard = () => {
+  const { user } = useAuth();
+
+  if ((user?.role || 'student') === 'student') {
+    return <StudentDashboard user={user} />;
+  }
+
+  return <OpsDashboard user={user} />;
 };
 
 export default Dashboard;
