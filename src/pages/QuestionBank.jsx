@@ -40,6 +40,18 @@ const QuestionBank = () => {
               <p className="text-gray-400 text-sm">Studi Kasus / Esai</p>
               <p className="text-3xl font-bold text-cyan-300">{curriculumQuestionSummary.essay}</p>
             </div>
+            {selectedBank.showLearningMeta && (
+              <>
+                <div className="bg-dark-800 border border-dark-700 rounded-xl p-6">
+                  <p className="text-gray-400 text-sm">Durasi Belajar</p>
+                  <p className="text-2xl font-bold text-cyan-300">{selectedBank.summary.learningDuration}</p>
+                </div>
+                <div className="bg-dark-800 border border-dark-700 rounded-xl p-6">
+                  <p className="text-gray-400 text-sm">Ritme Disarankan</p>
+                  <p className="text-lg font-bold text-cyan-300">{selectedBank.summary.rhythm}</p>
+                </div>
+              </>
+            )}
           </div>
 
           <div className="bg-dark-800 border border-dark-700 rounded-xl p-6 space-y-4">

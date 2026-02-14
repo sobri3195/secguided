@@ -51,3 +51,5 @@ Berikut 10 ide fitur baru yang bisa ditambahkan, lengkap dengan prompt yang bisa
     - **Deskripsi:** Kumpulan playbook per jenis isu (SQLi, XSS, SSRF, misconfig cloud, dsb.) yang terhubung langsung dari temuan.
     - **Prompt:**
       > "Buat struktur knowledge base playbook remediasi yang terhubung ke setiap jenis vulnerability, mendukung versioning, dan memiliki contoh langkah verifikasi pasca-perbaikan."
+
+> Detail desain untuk fitur #6-#10 tersedia di `docs/security-feature-blueprints.md`.

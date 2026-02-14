@@ -19,6 +19,7 @@ import NotFound from './pages/NotFound';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import Dashboard from './pages/Dashboard';
+import SecurityBlueprints from './pages/SecurityBlueprints';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="downloads" element={<Downloads />} />
             <Route path="tutorials" element={<Tutorials />} />
             <Route path="guides" element={<Guides />} />
+            <Route path="security-blueprints" element={<SecurityBlueprints />} />
             <Route path="question-bank" element={<QuestionBank />} />
             <Route path="anticheat" element={<Anticheat />} />
             <Route path="info" element={<Info />} />
