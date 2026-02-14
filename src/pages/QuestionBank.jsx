@@ -1,77 +1,44 @@
 import React, { useMemo, useState } from 'react';
 import PageHero from '../components/PageHero';
-import { cyberSecurityQuestionBank, questionBankSummary } from '../data/questionBank';
-import { hackerEliteQuestionBank, hackerEliteSummary } from '../data/hackerEliteQuestionBank';
+import {
+  curriculumMaterials,
+  cyberCurriculumQuestionSet,
+  curriculumQuestionSummary,
+} from '../data/cyberCurriculumQuestionBank';
 
-const bankOptions = {
-  general: {
-    key: 'general',
-    badge: 'BANK SOAL',
-    title: '300 Soal Cyber Security',
-    subtitle: 'Bank soal kurikulum cyber security dengan 20 chapter (masing-masing 15 soal).',
-    data: cyberSecurityQuestionBank,
-    summary: questionBankSummary,
-    showLearningMeta: false,
-  },
-  elite: {
-    key: 'elite',
-    badge: 'BANK SOAL ELITE',
-    title: '100 Soal Kurikulum Standar Hacker Elite',
-    subtitle: 'Materi + pembelajaran + 100 soal legal/defensif/profesional untuk jalur 12–24 bulan.',
-    data: hackerEliteQuestionBank,
-    summary: hackerEliteSummary,
-    showLearningMeta: true,
-  },
-};
+const FILTERS = ['Semua', 'Foundation', 'Intermediate', 'Advanced'];
 
 const QuestionBank = () => {
-  const [activeBank, setActiveBank] = useState('elite');
+  const [activeFilter, setActiveFilter] = useState('Semua');
+  const [showAnswerKey, setShowAnswerKey] = useState(false);
 
-  const selectedBank = useMemo(() => bankOptions[activeBank], [activeBank]);
+  const filteredQuestions = useMemo(() => {
+    if (activeFilter === 'Semua') return cyberCurriculumQuestionSet;
+    return cyberCurriculumQuestionSet.filter((question) => question.level === activeFilter);
+  }, [activeFilter]);
 
   return (
     <div>
       <PageHero
-        badge={selectedBank.badge}
-        title={selectedBank.title}
-        subtitle={selectedBank.subtitle}
+        badge="BANK SOAL & MATERI"
+        title="100 Soal Kurikulum Cyber Security"
+        subtitle="Materi terstruktur + 70 pilihan ganda + 30 studi kasus/esai dari level Foundation sampai Advanced."
       />
 
       <section className="bg-dark-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
-          <div className="flex flex-wrap gap-3">
-            <button
-              type="button"
-              onClick={() => setActiveBank('elite')}
-              className={`px-4 py-2 rounded-lg text-sm font-semibold border transition-colors ${
-                activeBank === 'elite'
-                  ? 'bg-cyan-500/20 border-cyan-400 text-cyan-200'
-                  : 'bg-dark-800 border-dark-700 text-gray-300 hover:border-cyan-600/60'
-              }`}
-            >
-              Kurikulum Hacker Elite (100 soal)
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveBank('general')}
-              className={`px-4 py-2 rounded-lg text-sm font-semibold border transition-colors ${
-                activeBank === 'general'
-                  ? 'bg-cyan-500/20 border-cyan-400 text-cyan-200'
-                  : 'bg-dark-800 border-dark-700 text-gray-300 hover:border-cyan-600/60'
-              }`}
-            >
-              Kurikulum Cyber Security (300 soal)
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="bg-dark-800 border border-dark-700 rounded-xl p-6">
-              <p className="text-gray-400 text-sm">Total Chapter</p>
-              <p className="text-3xl font-bold text-cyan-300">{selectedBank.summary.chapterCount}</p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="bg-dark-800 border border-dark-700 rounded-xl p-6">
               <p className="text-gray-400 text-sm">Total Soal</p>
-              <p className="text-3xl font-bold text-cyan-300">{selectedBank.summary.totalQuestions}</p>
+              <p className="text-3xl font-bold text-cyan-300">{curriculumQuestionSummary.total}</p>
+            </div>
+            <div className="bg-dark-800 border border-dark-700 rounded-xl p-6">
+              <p className="text-gray-400 text-sm">Pilihan Ganda</p>
+              <p className="text-3xl font-bold text-cyan-300">{curriculumQuestionSummary.mcq}</p>
+            </div>
+            <div className="bg-dark-800 border border-dark-700 rounded-xl p-6">
+              <p className="text-gray-400 text-sm">Studi Kasus / Esai</p>
+              <p className="text-3xl font-bold text-cyan-300">{curriculumQuestionSummary.essay}</p>
             </div>
             {selectedBank.showLearningMeta && (
               <>
@@ -87,53 +54,76 @@ const QuestionBank = () => {
             )}
           </div>
 
-          <div className="space-y-4">
-            {selectedBank.data.map((chapter) => (
-              <details key={chapter.id} className="bg-dark-800 border border-dark-700 rounded-xl p-6" open={chapter.id === 1}>
-                <summary className="cursor-pointer text-white font-semibold flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
-                  <span>Chapter {chapter.id}: {chapter.title}</span>
-                  <span className="text-cyan-300 text-sm">{chapter.questionCount} soal</span>
-                </summary>
-
-                {chapter.objective && (
-                  <p className="text-gray-300 text-sm mt-3">
-                    <span className="text-cyan-300 font-semibold">Tujuan:</span> {chapter.objective}
-                  </p>
-                )}
-
-                {chapter.materials && (
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {chapter.materials.map((material) => (
-                      <span
-                        key={`${chapter.id}-${material}`}
-                        className="text-xs bg-dark-900 border border-dark-700 text-gray-300 px-2.5 py-1 rounded-md"
-                      >
-                        {material}
-                      </span>
-                    ))}
-                  </div>
-                )}
-
-                {chapter.scenario && (
-                  <p className="text-gray-400 text-sm mt-3">Skenario latihan: {chapter.scenario}</p>
-                )}
-
-                <div className="mt-4 space-y-3">
-                  {chapter.questions.map((question, index) => (
-                    <div key={question.id} className="border border-dark-700 rounded-lg p-4">
-                      <p className="text-gray-200 text-sm font-medium">{index + 1}. {question.prompt}</p>
-                      {question.options && (
-                        <ol className="mt-3 space-y-1 text-sm text-gray-400 list-[upper-alpha] ml-5">
-                          {question.options.map((option) => (
-                            <li key={option}>{option}</li>
-                          ))}
-                        </ol>
-                      )}
-                    </div>
+          <div className="bg-dark-800 border border-dark-700 rounded-xl p-6 space-y-4">
+            <h2 className="text-xl font-semibold text-white">Ringkasan Materi</h2>
+            {curriculumMaterials.map((section) => (
+              <div key={section.level}>
+                <h3 className="text-cyan-300 font-semibold">{section.level}</h3>
+                <ul className="list-disc ml-5 mt-2 space-y-1 text-gray-300 text-sm">
+                  {section.modules.map((module) => (
+                    <li key={module}>{module}</li>
                   ))}
-                </div>
-              </details>
+                </ul>
+              </div>
             ))}
+          </div>
+
+          <div className="bg-dark-800 border border-dark-700 rounded-xl p-6 space-y-4">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+              <h2 className="text-xl font-semibold text-white">Daftar 100 Soal</h2>
+              <label className="text-sm text-gray-300 inline-flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  checked={showAnswerKey}
+                  onChange={(event) => setShowAnswerKey(event.target.checked)}
+                />
+                Tampilkan kunci jawaban pilihan ganda
+              </label>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              {FILTERS.map((filter) => (
+                <button
+                  key={filter}
+                  type="button"
+                  onClick={() => setActiveFilter(filter)}
+                  className={`px-3 py-1.5 rounded-lg border text-sm transition ${
+                    activeFilter === filter
+                      ? 'border-cyan-300 text-cyan-300 bg-cyan-300/10'
+                      : 'border-dark-600 text-gray-300 hover:border-cyan-400'
+                  }`}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
+
+            <div className="space-y-4">
+              {filteredQuestions.map((item) => (
+                <article key={item.id} className="border border-dark-700 rounded-lg p-4">
+                  <div className="flex items-center justify-between text-xs mb-2">
+                    <span className="text-cyan-300">Soal {item.id}</span>
+                    <span className="text-gray-400">{item.type === 'mcq' ? 'Pilihan Ganda' : 'Studi Kasus/Esai'} • {item.level}</span>
+                  </div>
+                  <p className="text-gray-100 text-sm">{item.question}</p>
+
+                  {item.type === 'mcq' ? (
+                    <ol className="mt-3 list-[upper-alpha] ml-5 text-sm text-gray-300 space-y-1">
+                      {item.options.map((option, idx) => (
+                        <li key={`${item.id}-${option}`}>
+                          {option}
+                          {showAnswerKey && idx === item.answerIndex ? (
+                            <span className="text-emerald-300"> ← Jawaban benar</span>
+                          ) : null}
+                        </li>
+                      ))}
+                    </ol>
+                  ) : (
+                    <p className="mt-3 text-sm text-gray-400">Rubrik: {item.rubric}</p>
+                  )}
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
