@@ -5,77 +5,131 @@ const MATERIAL_CATALOG = [
   {
     id: 'web-security',
     title: 'Cyber Website',
-    level: 'Pemula → Menengah',
-    description: 'Belajar SQL Injection, XSS, CSRF, dan secure coding dasar untuk aplikasi web.',
+    level: 'Beginner → Intermediate',
+    description: 'Learn SQL Injection, XSS, CSRF, and secure coding fundamentals for web applications.',
     topics: ['OWASP Top 10', 'Input validation', 'Session security', 'Bug bounty workflow'],
     materials: [
-      'Modul 1: Dasar HTTP, cookies, session',
-      'Modul 2: SQLi dan cara pencegahannya',
-      'Modul 3: XSS Stored vs Reflected',
-      'Modul 4: Hardening login & authentication',
+      'Module 1: HTTP basics, cookies, and sessions',
+      'Module 2: SQLi and prevention strategy',
+      'Module 3: Stored XSS vs Reflected XSS',
+      'Module 4: Hardening login and authentication',
     ],
-    questions: [
-      'Apa perbedaan antara Reflected XSS dan Stored XSS?',
-      'Kenapa prepared statement bisa mencegah SQL Injection?',
-      'Langkah validasi input yang benar pada form login?',
-      'Apa risiko jika cookie session tidak menggunakan HttpOnly?',
+    quiz: [
+      {
+        question: 'What is the key difference between Reflected XSS and Stored XSS?',
+        options: [
+          'Reflected XSS is only possible with admin accounts, while Stored XSS affects all users.',
+          'Reflected XSS payload is returned immediately in the response, while Stored XSS payload is saved on the server and served later.',
+          'Stored XSS only works in URL parameters, while Reflected XSS only works in comments.',
+          'There is no practical difference between both attack types.',
+        ],
+        answerIndex: 1,
+      },
+      {
+        question: 'Why can prepared statements prevent SQL Injection?',
+        options: [
+          'Because they encrypt SQL queries before execution.',
+          'Because they block all special characters globally in the application.',
+          'Because they separate SQL logic from user-provided data, so input is treated as data, not executable SQL.',
+          'Because they only allow SELECT queries and reject UPDATE/DELETE queries.',
+        ],
+        answerIndex: 2,
+      },
+      {
+        question: 'What is the most appropriate input validation strategy for a login form?',
+        options: [
+          'Trust all client-side validation because JavaScript runs in the browser.',
+          'Apply strict server-side allowlist validation and sanitize/normalize input before use.',
+          'Only validate password fields and skip username/email validation.',
+          'Disable validation to avoid blocking legitimate users.',
+        ],
+        answerIndex: 1,
+      },
+      {
+        question: 'What is the main risk if a session cookie is missing the HttpOnly flag?',
+        options: [
+          'The cookie cannot be sent over HTTPS.',
+          'The cookie can be read by JavaScript, increasing session theft risk via XSS.',
+          'The cookie expires immediately after login.',
+          'The server cannot map the cookie to a session ID.',
+        ],
+        answerIndex: 1,
+      },
     ],
   },
   {
     id: 'android-security',
     title: 'Cyber Android',
-    level: 'Menengah',
-    description: 'Fokus ke keamanan aplikasi Android: insecure storage, API abuse, dan reverse engineering dasar.',
+    level: 'Intermediate',
+    description: 'Focus on Android app security: insecure storage, API abuse, and basic reverse engineering.',
     topics: ['Mobile OWASP', 'Secure storage', 'Certificate pinning', 'APK analysis'],
     materials: [
-      'Modul 1: Struktur APK dan AndroidManifest',
-      'Modul 2: Penyimpanan aman (Keystore, EncryptedSharedPreferences)',
-      'Modul 3: API protection & token handling',
-      'Modul 4: Runtime protection anti-tampering',
+      'Module 1: APK structure and AndroidManifest',
+      'Module 2: Secure storage (Keystore, EncryptedSharedPreferences)',
+      'Module 3: API protection and token handling',
+      'Module 4: Runtime anti-tampering protection',
     ],
-    questions: [
-      'Kenapa hardcoded API key berbahaya di aplikasi Android?',
-      'Apa fungsi certificate pinning?',
-      'Bagaimana cara aman menyimpan refresh token di Android?',
-      'Sebutkan indikator aplikasi Android rentan reverse engineering.',
+    quiz: [
+      {
+        question: 'Why is a hardcoded API key dangerous in Android apps?',
+        options: [
+          'Because users cannot type API keys manually.',
+          'Because attackers can extract the key from the APK and abuse backend services.',
+          'Because Android blocks hardcoded strings at runtime.',
+          'Because API keys only work in debug mode.',
+        ],
+        answerIndex: 1,
+      },
     ],
   },
   {
     id: 'wifi-security',
     title: 'Cyber WiFi',
-    level: 'Pemula → Menengah',
-    description: 'Belajar dasar keamanan jaringan wireless, enkripsi, segmentasi, dan monitoring akses ilegal.',
+    level: 'Beginner → Intermediate',
+    description: 'Learn wireless security basics, encryption, segmentation, and illegal access monitoring.',
     topics: ['WPA2/WPA3', 'Rogue AP', 'Network segmentation', 'Packet analysis'],
     materials: [
-      'Modul 1: Dasar protokol 802.11',
-      'Modul 2: Perbedaan WPA2 dan WPA3',
-      'Modul 3: Deteksi Evil Twin / Rogue Access Point',
-      'Modul 4: Isolasi client dan VLAN tamu',
+      'Module 1: 802.11 protocol basics',
+      'Module 2: WPA2 vs WPA3 differences',
+      'Module 3: Evil Twin / Rogue Access Point detection',
+      'Module 4: Client isolation and guest VLAN',
     ],
-    questions: [
-      'Apa kelemahan utama dari WiFi Open tanpa enkripsi?',
-      'Apa yang dimaksud Evil Twin attack?',
-      'Kenapa VLAN tamu penting untuk jaringan kantor?',
-      'Bagaimana langkah respon awal jika ada rogue AP?',
+    quiz: [
+      {
+        question: 'What is the primary weakness of open WiFi without encryption?',
+        options: [
+          'Devices cannot connect automatically.',
+          'Traffic can be intercepted in plaintext by nearby attackers.',
+          'The router cannot assign IP addresses.',
+          'It only supports 2.4GHz channels.',
+        ],
+        answerIndex: 1,
+      },
     ],
   },
   {
     id: 'incident-response',
     title: 'Incident Response',
-    level: 'Menengah → Lanjutan',
-    description: 'Materi proses incident handling, containment, investigasi, dan pelaporan pasca-insiden.',
+    level: 'Intermediate → Advanced',
+    description: 'Study incident handling, containment, investigation, and post-incident reporting processes.',
     topics: ['NIST IR lifecycle', 'Containment', 'Forensic basics', 'Post-incident report'],
     materials: [
-      'Modul 1: Persiapan SOP insiden',
-      'Modul 2: Triage alert prioritas tinggi',
-      'Modul 3: Isolasi endpoint terinfeksi',
-      'Modul 4: Pelaporan RCA dan lesson learned',
+      'Module 1: Incident SOP preparation',
+      'Module 2: High-priority alert triage',
+      'Module 3: Infected endpoint isolation',
+      'Module 4: RCA reporting and lessons learned',
     ],
-    questions: [
-      'Apa tujuan fase containment saat terjadi insiden?',
-      'Sebutkan data minimal yang harus ada di timeline insiden.',
-      'Kapan tim harus melakukan eskalasi ke manajemen?',
-      'Mengapa post-incident review wajib dilakukan?',
+    quiz: [
+      {
+        question: 'What is the main goal of the containment phase during an incident?',
+        options: [
+          'To immediately restore all systems before collecting evidence.',
+          'To limit damage and prevent spread while preserving forensic integrity.',
+          'To notify customers before confirming incident scope.',
+          'To permanently delete all compromised assets.',
+        ],
+        answerIndex: 1,
+      },
     ],
   },
 ];
@@ -123,18 +177,26 @@ const findCadence = (severity) => (severity === 'Critical' || severity === 'High
 
 const StudentDashboard = ({ user }) => {
   const [selectedMaterialId, setSelectedMaterialId] = useState(MATERIAL_CATALOG[0].id);
+  const [selectedAnswers, setSelectedAnswers] = useState({});
   const selectedMaterial = MATERIAL_CATALOG.find((material) => material.id === selectedMaterialId) || MATERIAL_CATALOG[0];
+
+  const onSelectOption = (questionIndex, optionIndex) => {
+    setSelectedAnswers((prev) => ({
+      ...prev,
+      [`${selectedMaterial.id}-${questionIndex}`]: optionIndex,
+    }));
+  };
 
   return (
     <div className="min-h-screen bg-dark-900 text-white p-6 md:p-8 space-y-8">
       <header className="bg-dark-800 rounded-xl border border-dark-700 p-6">
-        <h1 className="text-3xl font-bold mb-3">Dashboard Siswa</h1>
-        <p className="text-gray-300">Mulai pembelajaran dengan memilih materi terlebih dahulu, lalu lanjut ke latihan soal sesuai topik.</p>
-        <p className="text-gray-400 mt-2 text-sm">Login sebagai: <span className="text-cyan-300 capitalize">{user?.role || 'student'}</span> • {user?.email}</p>
+        <h1 className="text-3xl font-bold mb-3">Student Dashboard</h1>
+        <p className="text-gray-300">Start by selecting a learning track, then continue with the topic-based MCQ practice.</p>
+        <p className="text-gray-400 mt-2 text-sm">Logged in as: <span className="text-cyan-300 capitalize">{user?.role || 'student'}</span> • {user?.email}</p>
       </header>
 
       <section className="bg-dark-800 border border-dark-700 rounded-xl p-6 space-y-4">
-        <h2 className="text-xl font-semibold">1) Pilih Materi</h2>
+        <h2 className="text-xl font-semibold">1) Choose Learning Material</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-3">
           {MATERIAL_CATALOG.map((material) => (
             <button
@@ -153,14 +215,14 @@ const StudentDashboard = ({ user }) => {
 
       <section className="grid grid-cols-1 xl:grid-cols-2 gap-6">
         <article className="bg-dark-800 border border-dark-700 rounded-xl p-6 space-y-4">
-          <h2 className="text-xl font-semibold">2) Materi: {selectedMaterial.title}</h2>
+          <h2 className="text-xl font-semibold">2) Material: {selectedMaterial.title}</h2>
           <ul className="list-disc list-inside text-gray-300 space-y-2">
             {selectedMaterial.materials.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
           <div className="rounded-lg bg-dark-900 border border-dark-700 p-4">
-            <p className="text-sm text-gray-400 mb-2">Topik yang akan dipelajari:</p>
+            <p className="text-sm text-gray-400 mb-2">Topics covered:</p>
             <div className="flex flex-wrap gap-2">
               {selectedMaterial.topics.map((topic) => (
                 <span key={topic} className="text-xs px-2 py-1 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-200">{topic}</span>
@@ -170,14 +232,43 @@ const StudentDashboard = ({ user }) => {
         </article>
 
         <article className="bg-dark-800 border border-dark-700 rounded-xl p-6 space-y-4">
-          <h2 className="text-xl font-semibold">3) Latihan Soal: {selectedMaterial.title}</h2>
-          <ol className="list-decimal list-inside text-gray-200 space-y-3">
-            {selectedMaterial.questions.map((question) => (
-              <li key={question} className="leading-relaxed">{question}</li>
-            ))}
-          </ol>
+          <h2 className="text-xl font-semibold">3) MCQ Practice: {selectedMaterial.title}</h2>
+          <div className="space-y-5">
+            {selectedMaterial.quiz.map((item, questionIndex) => {
+              const answerKey = `${selectedMaterial.id}-${questionIndex}`;
+              const selectedAnswer = selectedAnswers[answerKey];
+              const isAnswered = selectedAnswer !== undefined;
+              const isCorrect = selectedAnswer === item.answerIndex;
+
+              return (
+                <div key={item.question} className="rounded-lg border border-dark-700 bg-dark-900 p-4">
+                  <p className="font-medium mb-3">{questionIndex + 1}. {item.question}</p>
+                  <div className="space-y-2">
+                    {item.options.map((option, optionIndex) => {
+                      const isSelected = selectedAnswer === optionIndex;
+                      return (
+                        <button
+                          key={option}
+                          type="button"
+                          onClick={() => onSelectOption(questionIndex, optionIndex)}
+                          className={`w-full text-left px-3 py-2 rounded border text-sm transition-colors ${isSelected ? 'border-cyan-400 bg-cyan-500/10 text-cyan-100' : 'border-dark-600 hover:border-cyan-700'}`}
+                        >
+                          {String.fromCharCode(65 + optionIndex)}. {option}
+                        </button>
+                      );
+                    })}
+                  </div>
+                  {isAnswered && (
+                    <p className={`text-xs mt-3 ${isCorrect ? 'text-green-300' : 'text-amber-300'}`}>
+                      {isCorrect ? 'Correct answer.' : `Try again. Correct answer: ${String.fromCharCode(65 + item.answerIndex)}.`}
+                    </p>
+                  )}
+                </div>
+              );
+            })}
+          </div>
           <button type="button" className="px-4 py-2 rounded-md bg-cyan-600 hover:bg-cyan-700 transition-colors text-sm font-medium">
-            Mulai Kuis {selectedMaterial.title}
+            Start {selectedMaterial.title} Quiz
           </button>
         </article>
       </section>
