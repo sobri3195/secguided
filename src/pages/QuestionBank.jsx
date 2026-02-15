@@ -1,130 +1,153 @@
-import React, { useMemo, useState } from 'react';
+import React from 'react';
 import PageHero from '../components/PageHero';
 import {
-  curriculumMaterials,
-  cyberCurriculumQuestionSet,
-  curriculumQuestionSummary,
-} from '../data/cyberCurriculumQuestionBank';
-
-const FILTERS = ['Semua', 'Foundation', 'Intermediate', 'Advanced'];
+  curriculumModules,
+  questionStandards,
+  questionTemplates,
+  validationChecklist,
+  miniEvaluationPackage,
+  uiImplementation,
+} from '../data/curriculumUiBlueprint';
 
 const QuestionBank = () => {
-  const [activeFilter, setActiveFilter] = useState('Semua');
-  const [showAnswerKey, setShowAnswerKey] = useState(false);
-
-  const filteredQuestions = useMemo(() => {
-    if (activeFilter === 'Semua') return cyberCurriculumQuestionSet;
-    return cyberCurriculumQuestionSet.filter((question) => question.level === activeFilter);
-  }, [activeFilter]);
-
   return (
     <div>
       <PageHero
-        badge="BANK SOAL & MATERI"
-        title="100 Soal Kurikulum Cyber Security"
-        subtitle="Materi terstruktur + 70 pilihan ganda + 30 studi kasus/esai dari level Foundation sampai Advanced."
+        badge="KURIKULUM & STANDAR SOAL"
+        title="Blueprint Kurikulum Cyber Security"
+        subtitle="Struktur modul, standar kualitas soal, template evaluasi, dan panduan implementasi UI dalam satu halaman."
       />
 
       <section className="bg-dark-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-dark-800 border border-dark-700 rounded-xl p-6">
-              <p className="text-gray-400 text-sm">Total Soal</p>
-              <p className="text-3xl font-bold text-cyan-300">{curriculumQuestionSummary.total}</p>
-            </div>
-            <div className="bg-dark-800 border border-dark-700 rounded-xl p-6">
-              <p className="text-gray-400 text-sm">Pilihan Ganda</p>
-              <p className="text-3xl font-bold text-cyan-300">{curriculumQuestionSummary.mcq}</p>
-            </div>
-            <div className="bg-dark-800 border border-dark-700 rounded-xl p-6">
-              <p className="text-gray-400 text-sm">Studi Kasus / Esai</p>
-              <p className="text-3xl font-bold text-cyan-300">{curriculumQuestionSummary.essay}</p>
-            </div>
-            {curriculumQuestionSummary.showLearningMeta && (
-              <>
-                <div className="bg-dark-800 border border-dark-700 rounded-xl p-6">
-                  <p className="text-gray-400 text-sm">Durasi Belajar</p>
-                  <p className="text-2xl font-bold text-cyan-300">{curriculumQuestionSummary.learningDuration}</p>
-                </div>
-                <div className="bg-dark-800 border border-dark-700 rounded-xl p-6">
-                  <p className="text-gray-400 text-sm">Ritme Disarankan</p>
-                  <p className="text-lg font-bold text-cyan-300">{curriculumQuestionSummary.rhythm}</p>
-                </div>
-              </>
-            )}
+          <div className="bg-dark-800 border border-dark-700 rounded-xl p-6">
+            <h2 className="text-xl font-semibold text-white">1) Struktur Tampilan Kurikulum</h2>
+            <p className="text-gray-400 mt-2 text-sm">Setiap modul ditampilkan berurutan: Judul, Level, Durasi, Tujuan, Materi Inti, Praktik/Lab, Kriteria Kelulusan, dan Evaluasi.</p>
           </div>
 
-          <div className="bg-dark-800 border border-dark-700 rounded-xl p-6 space-y-4">
-            <h2 className="text-xl font-semibold text-white">Ringkasan Materi</h2>
-            {curriculumMaterials.map((section) => (
-              <div key={section.level}>
-                <h3 className="text-cyan-300 font-semibold">{section.level}</h3>
-                <ul className="list-disc ml-5 mt-2 space-y-1 text-gray-300 text-sm">
-                  {section.modules.map((module) => (
-                    <li key={module}>{module}</li>
-                  ))}
-                </ul>
-              </div>
+          <div className="space-y-6">
+            {curriculumModules.map((module) => (
+              <article key={module.id} className="bg-dark-800 border border-dark-700 rounded-xl p-6 space-y-5">
+                <header className="border-b border-dark-700 pb-4">
+                  <h3 className="text-xl font-semibold text-cyan-300">Modul {module.id} — {module.title}</h3>
+                  <div className="mt-3 text-sm text-gray-300 grid sm:grid-cols-3 gap-2">
+                    <p><span className="text-gray-500">Level:</span> {module.level}</p>
+                    <p><span className="text-gray-500">Durasi:</span> {module.duration}</p>
+                    <p><span className="text-gray-500">Prasyarat:</span> {module.prerequisite}</p>
+                  </div>
+                </header>
+
+                <div>
+                  <h4 className="font-semibold text-white">Tujuan Pembelajaran</h4>
+                  <ul className="list-disc ml-5 mt-2 space-y-1 text-sm text-gray-300">
+                    {module.goals.map((goal) => <li key={goal}>{goal}</li>)}
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-white">Materi Inti</h4>
+                  <ol className="list-decimal ml-5 mt-2 space-y-1 text-sm text-gray-300">
+                    {module.topics.map((topic) => <li key={topic}>{topic}</li>)}
+                  </ol>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-white">Praktik / Lab</h4>
+                  <ul className="list-disc ml-5 mt-2 space-y-1 text-sm text-gray-300">
+                    {module.labs.map((lab) => <li key={lab}>{lab}</li>)}
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-white">Kriteria Kelulusan</h4>
+                  <ul className="list-disc ml-5 mt-2 space-y-1 text-sm text-gray-300">
+                    {module.graduationCriteria.map((criteria) => <li key={criteria}>{criteria}</li>)}
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-white">Evaluasi</h4>
+                  <ul className="list-disc ml-5 mt-2 space-y-1 text-sm text-gray-300">
+                    <li>Pre-test: {module.evaluation.preTest}</li>
+                    <li>Latihan: {module.evaluation.practice}</li>
+                    <li>Post-test: {module.evaluation.postTest}</li>
+                  </ul>
+                </div>
+              </article>
             ))}
           </div>
 
-          <div className="bg-dark-800 border border-dark-700 rounded-xl p-6 space-y-4">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-              <h2 className="text-xl font-semibold text-white">Daftar 100 Soal</h2>
-              <label className="text-sm text-gray-300 inline-flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  checked={showAnswerKey}
-                  onChange={(event) => setShowAnswerKey(event.target.checked)}
-                />
-                Tampilkan kunci jawaban pilihan ganda
-              </label>
-            </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            <section className="bg-dark-800 border border-dark-700 rounded-xl p-6 space-y-4">
+              <h2 className="text-xl font-semibold text-white">2) Standar Soal</h2>
+              <div>
+                <h3 className="text-cyan-300 font-semibold">Karakteristik Soal Baik</h3>
+                <ul className="list-disc ml-5 mt-2 text-sm text-gray-300 space-y-1">
+                  {questionStandards.characteristics.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-cyan-300 font-semibold">Komposisi Post-test (15 Soal)</h3>
+                <ul className="list-disc ml-5 mt-2 text-sm text-gray-300 space-y-1">
+                  {questionStandards.composition.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-cyan-300 font-semibold">Distribusi Kesulitan</h3>
+                <ul className="list-disc ml-5 mt-2 text-sm text-gray-300 space-y-1">
+                  {questionStandards.difficulty.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-cyan-300 font-semibold">Blueprint Kognitif (Bloom)</h3>
+                <ul className="list-disc ml-5 mt-2 text-sm text-gray-300 space-y-1">
+                  {questionStandards.bloom.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              </div>
+            </section>
 
-            <div className="flex flex-wrap gap-2">
-              {FILTERS.map((filter) => (
-                <button
-                  key={filter}
-                  type="button"
-                  onClick={() => setActiveFilter(filter)}
-                  className={`px-3 py-1.5 rounded-lg border text-sm transition ${
-                    activeFilter === filter
-                      ? 'border-cyan-300 text-cyan-300 bg-cyan-300/10'
-                      : 'border-dark-600 text-gray-300 hover:border-cyan-400'
-                  }`}
-                >
-                  {filter}
-                </button>
-              ))}
-            </div>
+            <section className="bg-dark-800 border border-dark-700 rounded-xl p-6 space-y-4">
+              <h2 className="text-xl font-semibold text-white">4) Checklist Validasi Soal</h2>
+              <ul className="space-y-2 text-sm text-gray-300">
+                {validationChecklist.map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <span className="text-cyan-300 mt-0.5">☐</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
 
-            <div className="space-y-4">
-              {filteredQuestions.map((item) => (
-                <article key={item.id} className="border border-dark-700 rounded-lg p-4">
-                  <div className="flex items-center justify-between text-xs mb-2">
-                    <span className="text-cyan-300">Soal {item.id}</span>
-                    <span className="text-gray-400">{item.type === 'mcq' ? 'Pilihan Ganda' : 'Studi Kasus/Esai'} • {item.level}</span>
-                  </div>
-                  <p className="text-gray-100 text-sm">{item.question}</p>
+              <h2 className="text-xl font-semibold text-white pt-2">5) Mini Paket Evaluasi</h2>
+              <ul className="list-disc ml-5 text-sm text-gray-300 space-y-1">
+                <li><strong>Pre-test:</strong> {miniEvaluationPackage.preTest}</li>
+                <li><strong>Latihan:</strong> {miniEvaluationPackage.practice}</li>
+                <li><strong>Post-test:</strong> {miniEvaluationPackage.postTest}</li>
+              </ul>
+              <div className="rounded-lg border border-cyan-500/40 bg-cyan-500/10 p-4 text-sm text-cyan-100 space-y-1">
+                <p>{miniEvaluationPackage.passingScore}</p>
+                <p>{miniEvaluationPackage.labScore}</p>
+              </div>
+            </section>
+          </div>
 
-                  {item.type === 'mcq' ? (
-                    <ol className="mt-3 list-[upper-alpha] ml-5 text-sm text-gray-300 space-y-1">
-                      {item.options.map((option, idx) => (
-                        <li key={`${item.id}-${option}`}>
-                          {option}
-                          {showAnswerKey && idx === item.answerIndex ? (
-                            <span className="text-emerald-300"> ← Jawaban benar</span>
-                          ) : null}
-                        </li>
-                      ))}
-                    </ol>
-                  ) : (
-                    <p className="mt-3 text-sm text-gray-400">Rubrik: {item.rubric}</p>
-                  )}
+          <section className="bg-dark-800 border border-dark-700 rounded-xl p-6 space-y-4">
+            <h2 className="text-xl font-semibold text-white">3) Template Penulisan Soal</h2>
+            <div className="grid lg:grid-cols-3 gap-4">
+              {questionTemplates.map((template) => (
+                <article key={template.title} className="border border-dark-700 rounded-lg p-4 bg-dark-900/50">
+                  <h3 className="font-semibold text-cyan-300 mb-2">{template.title}</h3>
+                  <pre className="text-xs text-gray-300 whitespace-pre-wrap leading-relaxed">{template.body}</pre>
                 </article>
               ))}
             </div>
-          </div>
+          </section>
+
+          <section className="bg-dark-800 border border-dark-700 rounded-xl p-6">
+            <h2 className="text-xl font-semibold text-white">6) Catatan Implementasi UI</h2>
+            <ol className="list-decimal ml-5 mt-2 text-sm text-gray-300 space-y-1">
+              {uiImplementation.map((item) => <li key={item}>{item}</li>)}
+            </ol>
+          </section>
         </div>
       </section>
     </div>
