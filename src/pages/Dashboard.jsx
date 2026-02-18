@@ -3,6 +3,237 @@ import { useAuth } from '../context/AuthContext';
 
 const MATERIAL_CATALOG = [
   {
+    id: 'web-security-complete',
+    title: 'Web Security Complete',
+    level: 'Dasar → Advanced',
+    description: 'Kurikulum lengkap 20 modul web security dari dasar hingga advanced dengan praktik hands-on dan real-world scenarios.',
+    topics: ['HTTP & Threat Modeling', 'OWASP Top 10', 'Auth & Session', 'Injection', 'XSS & CSRF', 'API Security', 'SDLC'],
+    materials: [
+      'Modul 1: Dasar Web & HTTP',
+      'Modul 2: Threat Modeling untuk Web',
+      'Modul 3: OWASP Top 10 Overview',
+      'Modul 4: Authentication Fundamentals',
+      'Modul 5: Session Management',
+      'Modul 6: Authorization & Access Control',
+      'Modul 7: Input Validation & Output Encoding',
+      'Modul 8: SQL Injection',
+      'Modul 9: NoSQL Injection',
+      'Modul 10: Cross-Site Scripting (XSS)',
+      'Modul 11: Cross-Site Request Forgery (CSRF)',
+      'Modul 12: Clickjacking & UI Redressing',
+      'Modul 13: File Upload Security',
+      'Modul 14: Path Traversal & File Inclusion',
+      'Modul 15: Command Injection & SSRF',
+      'Modul 16: Deserialization & Template Injection',
+      'Modul 17: Security Headers & Browser Defenses',
+      'Modul 18: API Security (REST/GraphQL)',
+      'Modul 19: Logging, Monitoring, Incident Basics',
+      'Modul 20: Secure SDLC & Pentest Workflow',
+    ],
+    quiz: [
+      {
+        question: 'Apa perbedaan utama antara request header dan response header dalam HTTP?',
+        options: [
+          'Request header dikirim client ke server, response header dikirim server ke client',
+          'Request header berisi status code, response header berisi cookie',
+          'Tidak ada perbedaan, keduanya sama saja',
+          'Response header hanya berisi metadata, request header berisi data payload',
+        ],
+        answerIndex: 0,
+      },
+      {
+        question: 'Dalam threat modeling STRIDE, apa yang diwakili oleh huruf "I"?',
+        options: [
+          'Information',
+          'Infection',
+          'Information Disclosure',
+          'Injection',
+        ],
+        answerIndex: 2,
+      },
+      {
+        question: 'Manakah yang BUKAN bagian dari OWASP Top 10 terbaru?',
+        options: [
+          'Broken Access Control',
+          'Cryptographic Failures',
+          'Injection',
+          'Denial of Service',
+        ],
+        answerIndex: 3,
+      },
+      {
+        question: 'Apa tujuan utama dari Multi-Factor Authentication (MFA)?',
+        options: [
+          'Mempercepat proses login',
+          'Mengurangi beban server',
+          'Menambahkan lapisan keamanan dengan membutuhkan multiple factor autentikasi',
+          'Memudahkan user mengingat password',
+        ],
+        answerIndex: 2,
+      },
+      {
+        question: 'Cookie flag apa yang mencegah JavaScript mengakses cookie?',
+        options: [
+          'Secure',
+          'SameSite',
+          'HttpOnly',
+          'Path',
+        ],
+        answerIndex: 2,
+      },
+      {
+        question: 'Apa itu IDOR (Insecure Direct Object Reference)?',
+        options: [
+          'Database error saat query',
+          'Celah di mana user bisa akses resource milik user lain tanpa proper authorization',
+          'Type error dalam JavaScript',
+          'Method HTTP yang tidak dikenali',
+        ],
+        answerIndex: 1,
+      },
+      {
+        question: 'Mengapa whitelisting lebih aman daripada blacklisting untuk input validation?',
+        options: [
+          'Blacklisting memblokir semua input',
+          'Whitelisting hanya mengizinkan input yang sudah terverifikasi aman, sedangkan blacklisting bisa lewat jika ada pattern baru',
+          'Whitelisting lebih cepat diproses',
+          'Blacklisting tidak bisa diimplementasikan',
+        ],
+        answerIndex: 1,
+      },
+      {
+        question: 'Bagaimana prepared statements mencegah SQL Injection?',
+        options: [
+          'Mengenkripsi query',
+          'Memvalidasi semua input manual',
+          'Memisahkan logic SQL dari data, sehingga input diperlakukan sebagai data bukan executable code',
+          'Menghapus semua karakter spesial',
+        ],
+        answerIndex: 2,
+      },
+      {
+        question: 'Apa perbedaan utama antara SQL Injection pada database relasional vs NoSQL?',
+        options: [
+          'Tidak ada perbedaan',
+          'NoSQL injection menggunakan query injection berbasis operator seperti $ne, $gt, $regex, bukan syntax SQL',
+          'SQL injection hanya bekerja di MySQL, NoSQL injection di MongoDB saja',
+          'NoSQL injection memerlukan database password',
+        ],
+        answerIndex: 1,
+      },
+      {
+        question: 'Jenis XSS apa yang tersimpan di server dan dieksekusi setiap kali user membuka halaman?',
+        options: [
+          'Reflected XSS',
+          'Stored XSS',
+          'DOM XSS',
+          'Self XSS',
+        ],
+        answerIndex: 1,
+      },
+      {
+        question: 'Apa perbedaan utama antara XSS dan CSRF?',
+        options: [
+          'XSS mengeksekusi script di browser user, CSRF memaksa user melakukan request yang tidak diinginkan',
+          'XSS hanya bekerja di Chrome, CSRF di Firefox',
+          'CSRF lebih berbahaya daripada XSS',
+          'Tidak ada perbedaan',
+        ],
+        answerIndex: 0,
+      },
+      {
+        question: 'Security header apa yang digunakan untuk mencegah website di-embed dalam iframe?',
+        options: [
+          'X-Frame-Options',
+          'X-XSS-Protection',
+          'X-Content-Type-Options',
+          'Strict-Transport-Security',
+        ],
+        answerIndex: 0,
+      },
+      {
+        question: 'Apa risiko terbesar dari file upload yang tidak divalidasi dengan benar?',
+        options: [
+          'File terlalu besar',
+          'Eksekusi malicious code (webshell), path traversal, atau file type spoofing',
+          'Upload gagal',
+          'Server kehabisan storage',
+        ],
+        answerIndex: 1,
+      },
+      {
+        question: 'Apa yang dimaksud dengan Local File Inclusion (LFI)?',
+        options: [
+          'Upload file lokal',
+          'Celah di mana attacker bisa meng-include file dari server lokal tanpa validasi path',
+          'Error saat membaca file',
+          'Method HTTP untuk local file',
+        ],
+        answerIndex: 1,
+      },
+      {
+        question: 'Apa perbedaan antara Command Injection dan SSRF?',
+        options: [
+          'Tidak ada perbedaan',
+          'Command Injection mengeksekusi OS command di server, SSRF memaksa server membuat request ke resource internal/external',
+          'SSRF lebih berbahaya',
+          'Command Injection hanya di Linux',
+        ],
+        answerIndex: 1,
+      },
+      {
+        question: 'Apa yang dimaksud dengan Template Injection?',
+        options: [
+          'Error dalam templating engine',
+          'Celah di mana input user di-inject ke template engine dan dieksekusi sebagai code',
+          'CSS injection',
+          'HTML injection',
+        ],
+        answerIndex: 1,
+      },
+      {
+        question: 'Apa fungsi dari Content Security Policy (CSP)?',
+        options: [
+          'Mencegah semua serangan',
+          'Mendefinisikan resource mana yang boleh dimuat oleh browser untuk mencegah XSS dan data exfiltration',
+          'Mengenkripsi semua request',
+          'Memblokir semua external script',
+        ],
+        answerIndex: 1,
+      },
+      {
+        question: 'Apa yang dimaksud dengan BOLA (Broken Object Level Authorization) dalam API security?',
+        options: [
+          'Type API yang salah',
+          'Celah di mana user bisa akses object milik user lain tanpa proper authorization check',
+          'Error rate limiting',
+          'Database connection issue',
+        ],
+        answerIndex: 1,
+      },
+      {
+        question: 'Apa yang harus dilakukan untuk PII (Personally Identifiable Information) dalam logging?',
+        options: [
+          'Log semua PII untuk debugging',
+          'Hindari logging PII atau gunakan masking/redaction',
+          'Hapus semua log',
+          'Encrypt log dengan kunci yang sama',
+        ],
+        answerIndex: 1,
+      },
+      {
+        question: 'Apa yang dimaksud dengan Secure SDLC (Software Development Life Cycle)?',
+        options: [
+          'Software development yang cepat',
+          'Integrasi security practice di setiap fase development dari planning hingga deployment',
+          'Hanya menggunakan secure programming language',
+          'Security testing hanya di akhir project',
+        ],
+        answerIndex: 1,
+      },
+    ],
+  },
+  {
     id: 'web-security',
     title: 'Cyber Website',
     level: 'Beginner → Intermediate',
@@ -176,7 +407,7 @@ const ASSET_SUMMARY = [
 const findCadence = (severity) => (severity === 'Critical' || severity === 'High' ? 'Harian' : 'Mingguan');
 
 const StudentDashboard = ({ user }) => {
-  const [selectedMaterialId, setSelectedMaterialId] = useState(MATERIAL_CATALOG[0].id);
+  const [selectedMaterialId, setSelectedMaterialId] = useState('web-security-complete');
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const selectedMaterial = MATERIAL_CATALOG.find((material) => material.id === selectedMaterialId) || MATERIAL_CATALOG[0];
 
